@@ -1,0 +1,324 @@
+*,
+*::before,
+*::after {
+ box-sizing: border-box;
+}
+ 
+/* add <style> html ( all: unset;) </style> to your <head> in app.html */
+:root {
+ font-size: calc(1rem + 0.3vw);
+}
+ 
+body,
+div,
+span,
+applet,
+object,
+iframe,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+/* strong, */
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font: inherit;
+ vertical-align: baseline;
+}
+ 
+em {
+ font-style: italic;
+}
+ 
+body {
+ all: unset;
+ --ratio: 1.61803398875;
+ --s-5: calc(
+   var(--s0) / var(--ratio) / var(--ratio) / var(--ratio) / var(--ratio) /
+     var(--ratio)
+ );
+ --s-4: calc(
+   var(--s0) / var(--ratio) / var(--ratio) / var(--ratio) / var(--ratio)
+ );
+ --s-3: calc(var(--s0) / var(--ratio) / var(--ratio) / var(--ratio));
+ --s-2: calc(var(--s0) / var(--ratio) / var(--ratio));
+ --s-1: calc(var(--s0) / var(--ratio));
+ --s0: 1rem;
+ --s1: calc(var(--s0) * var(--ratio));
+ --s2: calc(var(--s0) * var(--ratio) * var(--ratio));
+ --s3: calc(var(--s0) * var(--ratio) * var(--ratio) * var(--ratio));
+ --s4: calc(
+   var(--s0) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio)
+ );
+ --s5: calc(
+   var(--s0) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) *
+     var(--ratio)
+ );
+ --measure: 75ch;
+ 
+ --color-primary-h: 38;
+ --color-primary-s: 87%;
+ --color-primary-l: 46%;
+ --color-primary: hsl(
+   var(--color-primary-h),
+   var(--color-primary-s),
+   var(--color-primary-l)
+ );
+ 
+/* this is set up for complementary color scheme. For more schemes go to: */
+/* https://gist.github.com/realgoatish/e07807f394189adaaf1f679e38a1772a */
+ 
+ /* lighten */
+ --color-primary--light: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) + 15%));
+ 
+ /* darken */
+ --color-primary--dark: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 15%));
+ 
+ /* "white" version */
+ --color-primary--white: hsl(var(--color-primary-h), var(--color-primary-s), 95%);
+ 
+ /* shadow for the white version */
+ --color-primary--white--shadow: var(--color-primary-h) clamp(0%, var(--color-primary-s), 50%) 50%;
+ 
+ /* "black" version */
+ --color-primary--black: hsl(var(--color-primary-h), var(--color-primary-s), 5%);
+  /* complement */
+ --color-secondary: hsl(calc(var(--color-primary-h) + 180), var(--color-primary-s), var(--color-primary-l));
+ 
+ /* lighten */
+ --color-secondary--light: hsl(calc(var(--color-primary-h) + 180), var(--color-primary-s), calc(var(--color-primary-l) + 15%));
+ 
+ /* darken */
+ --color-secondary--dark: hsl(calc(var(--color-primary-h) + 180), var(--color-primary-s), calc(var(--color-primary-l) - 15%));
+ 
+ /* "white" version */
+ --color-secondary--white: hsl(calc(var(--color-primary-h) + 180), var(--color-primary-s), 95%);
+ 
+ /* shadow for the white version */
+ --color-secondary--white--shadow: calc(var(--color-primary-h) + 180) clamp(0%, var(--color-primary-s), 50%) 50%;
+  /* "black" version */
+ --color-secondary--black: hsl(calc(var(--color-primary-h) + 180), var(--color-primary-s), 5%);
+ 
+
+ 
+ 
+ --line-height: 1.75;
+ --font-size-small: var(--s-1);
+ --font-size-base: var(--s0);
+ --font-size-biggish: var(--s1);
+ --font-size-big: var(--s2);
+ line-height: var(--line-height);
+ background-color: var(--color-primary--white);
+ color: var(--color-primary--black);
+ font-size: var(--font-size-base);
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+   sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+ -webkit-font-smoothing: antialiased;
+}
+ 
+* {
+ max-inline-size: var(--measure);
+}
+ 
+html,
+body,
+div,
+header,
+nav,
+main,
+footer,
+aside,
+section,
+article {
+ max-inline-size: none;
+}
+ 
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+ display: block;
+}
+ 
+/**** BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE ****/
+ 
+html {
+ min-inline-size: fit-content;
+ min-block-size: 100vh;
+}
+ 
+body > div {
+ min-block-size: 100vh;
+ display: flex;
+ flex-direction: column;
+}
+ 
+main {
+ flex: 1 0 auto;
+}
+ 
+footer {
+ flex-shrink: 0;
+}
+ 
+/**** END CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE ****/
+ 
+figure {
+ /* Safari hack to prevent bottom gap between figure and image */
+ line-height: 0;
+}
+ 
+img {
+ max-inline-size: 100%;
+}
+ 
+button {
+ color: white;
+ background-color: #000;
+ border-radius: 0.25rem;
+ padding: 1em 1.5em;
+}
+ 
+h1, h2, h3, h4, h5, h6 {
+ line-height: 1.5;
+}
+ 
+h1 {
+ font-size: var(--font-size-big);
+}
+ 
+h2 {
+ font-size: var(--font-size-biggish);
+ color: var(--color-secondary--light);
+}
+ 
+h3 {
+ font-weight: 600;
+}
+ 
+ul {
+ list-style: none;
+}
+ 
+.content-section--spacer {
+ padding-block: var(--s2);
+}
+ 
+.flex {
+ display: flex;
+}
+ 
+.space-between {
+ justify-content: space-between;
+}
+ 
+.nav-link {
+ color: var(--color-secondary--white);
+}
+ 
+.nav-link:hover, .nav-link:active {
+ color: var(--color-secondary--dark);
+ background-color: var(--color-primary--white);
+}
+ 
+a {
+ color: var(--color-secondary--white);
+}
+ 
+a:hover, a:active {
+ color: var(--color-secondary--dark);
+ background-color: var(--color-primary--white);
+}
+ 
+.text-small {
+ font-size: var(--font-size-small);
+}
+ 
+.screen-reader-only {
+ position: absolute !important;
+ clip: rect(1px, 1px, 1px, 1px) !important;
+ padding: 0 !important;
+ border: 0 !important;
+ height: 1px !important;
+ width: 1px !important;
+ overflow: hidden !important;
+}
