@@ -37,7 +37,7 @@
 					<Social data={socialNav} />
 				</div>
 				<div class="phone-address-hours">
-					<span>856-952-6603</span><br />
+					<span>856-544-9355</span><br />
 					<span>{`${address.streetAddress},`}</span><br />
 					<span>{`${address.city}, ${address.state} ${address.zip}`}</span>
 					<br />
