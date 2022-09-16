@@ -4,6 +4,8 @@ import { layoutQuery } from '$lib/js/sanityQueries';
 import { client } from '$lib/js/sanityClient'
 import { processLogoImageUrls } from '$lib/js/processLogoImageUrls'
 
+export const prerender = true
+
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {
 
