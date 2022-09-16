@@ -1,0 +1,29 @@
+{
+  "root": true,
+  "project": {
+    "name": "sunpress"
+  },
+  "api": {
+    "projectId": "d5lrq1u3",
+    "dataset": "sunpress-dataset"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}

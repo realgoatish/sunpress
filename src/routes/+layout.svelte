@@ -1,4 +1,28 @@
+<script>
+	import '../app.css';
+	import Sprite from '$lib/Sprite.svelte';
+	import Header from '$lib/Header.svelte';
+	import Footer from '$lib/Footer.svelte';
+
+	/** @type {import('./$types').PageData} */
+	export let data;
+
+	// $: console.log(`layout data on front end: ${JSON.stringify(data, null, 2)}`);
+
+	// TODO currently un-used attributes from data = title, description
+	$: headerData = {
+		address: data.address,
+		logo: data.logo,
+		navigationSections: data.navigationSections,
+		openingHours: data.openingHours
+	};
+</script>
+
+<Sprite />
+
+<Header data={headerData} />
 <slot />
+<Footer data={data.navigationSections} />
 
 <style>
 	@font-face {

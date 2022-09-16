@@ -10,18 +10,5 @@
 </script>
 
 <main>
-	<div>
-		<Center max="var(--measure)" gutters="var(--s-1)">
-			<Stack>
-				<PortableText
-					value={data.body}
-					components={{
-						types: {
-							figure: Figure
-						}
-					}}
-				/>
-			</Stack>
-		</Center>
-	</div>
+	<p>test</p>
 </main>
