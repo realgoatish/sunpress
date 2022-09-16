@@ -58,11 +58,11 @@
 
 <style>
 	header .logo-social-contact {
-		min-inline-size: 30%;
+		min-inline-size: var(--s5);
 	}
 
 	header div.social {
-		font-size: var(--s2);
+		font-size: var(--s3);
 	}
 
 	header :global(div.social ul),

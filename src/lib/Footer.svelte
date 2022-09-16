@@ -22,6 +22,6 @@
 <style>
 	div {
 		max-inline-size: var(--s5);
-		font-size: var(--s2);
+		font-size: var(--s3);
 	}
 </style>

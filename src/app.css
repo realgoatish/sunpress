@@ -294,6 +294,7 @@ ul {
  
 .nav-link {
  color: var(--color-secondary--dark);
+ font-size: var(--font-size-biggish)
 }
 
 .selected {
