@@ -1,7 +1,6 @@
 <script>
-	import { Center, Stack } from '@realgoatish/svelte-every-layout';
+	import { Center } from '@realgoatish/svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
-	import Figure from '$lib/Figure.svelte';
 	import MenuSection from './MenuSection.svelte';
 
 	/** @type {import('./$types').PageData} */

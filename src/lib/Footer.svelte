@@ -1,5 +1,5 @@
 <script>
-	import { Cluster, Center, Stack } from '@realgoatish/svelte-every-layout';
+	import { Center } from '@realgoatish/svelte-every-layout';
 	import Social from './Social.svelte';
 
 	export let data;
@@ -24,8 +24,4 @@
 		max-inline-size: var(--s5);
 		font-size: var(--s3);
 	}
-
-	/* div :global(ul), div :global(li) {
-
-  } */
 </style>

@@ -7,7 +7,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: console.log(`layout data on front end: ${JSON.stringify(data, null, 2)}`);
+	// $: console.log(`layout data on front end: ${JSON.stringify(data, null, 2)}`);
 
 	// TODO currently un-used attributes from data = title, description
 	$: headerData = {
