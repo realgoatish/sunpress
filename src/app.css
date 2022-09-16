@@ -297,10 +297,6 @@ ul {
  font-size: var(--font-size-biggish)
 }
 
-.selected {
-  text-decoration: none;
-}
-
 .selected::after {
   content: '✓';
 }

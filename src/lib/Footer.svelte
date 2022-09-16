@@ -24,4 +24,8 @@
 		max-inline-size: var(--s5);
 		font-size: var(--s3);
 	}
+
+	/* div :global(ul), div :global(li) {
+
+  } */
 </style>

@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { Center, Frame, Cluster, Icon } from '@realgoatish/svelte-every-layout';
+	import { Center, Frame, Cluster, Sidebar } from '@realgoatish/svelte-every-layout';
 	import Social from './Social.svelte';
 
 	export let data;
@@ -20,10 +20,10 @@
 </script>
 
 <header>
-	<Center max="var(--measure)">
-		<Cluster wrapperElement="div" justify="space-around">
-			<div class="logo-social-contact">
-				<div>
+	<Center max="var(--measure)" gutters="var(--s-1)">
+		<Sidebar side="left" sideWidth="var(--s5)" contentMin="40%" space="var(--s-3)">
+			<div slot="first-child" class="logo-social-contact">
+				<div class="logo-wrapper">
 					<Frame ratio="1.5:3.5">
 						<img
 							alt={logo.alt}
@@ -37,9 +37,9 @@
 					<Social data={socialNav} />
 				</div>
 			</div>
-			<div class="site-navigation">
+			<div slot="last-child" class="site-navigation">
 				<nav>
-					<Cluster wrapperElement="ul" align="center">
+					<Cluster wrapperElement="ul" justify="center" space="var(--s-1)">
 						{#each sitewideNav.items as item}
 							<li>
 								<a
@@ -52,14 +52,21 @@
 					</Cluster>
 				</nav>
 			</div>
-		</Cluster>
+		</Sidebar>
 	</Center>
 </header>
 
 <style>
 	header .logo-social-contact {
 		min-inline-size: var(--s5);
+		max-inline-size: clamp(28vw, 30vw, 35vw);
+		margin: 0 auto;
 	}
+
+	/* header .logo-wrapper {
+		max-inline-size: clamp(25vw, 27vw, 35vw);
+		margin: 0 auto;
+	} */
 
 	header div.social {
 		font-size: var(--s3);
