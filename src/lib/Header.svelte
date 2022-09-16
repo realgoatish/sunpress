@@ -36,6 +36,13 @@
 				<div class="social">
 					<Social data={socialNav} />
 				</div>
+				<div class="phone-address-hours">
+					<span>856-952-6603</span><br />
+					<span>{`${address.streetAddress},`}</span><br />
+					<span>{`${address.city}, ${address.state} ${address.zip}`}</span>
+					<br />
+					<span />
+				</div>
 			</div>
 			<div slot="last-child" class="site-navigation">
 				<nav>
@@ -59,8 +66,11 @@
 <style>
 	header .logo-social-contact {
 		min-inline-size: var(--s5);
-		max-inline-size: clamp(28vw, 30vw, 35vw);
+		/* max-inline-size: clamp(28vw, 30vw, 35vw); */
 		margin: 0 auto;
+	}
+	header .phone-address-hours {
+		text-align: center;
 	}
 
 	/* header .logo-wrapper {

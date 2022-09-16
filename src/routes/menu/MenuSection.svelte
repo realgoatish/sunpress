@@ -10,7 +10,7 @@
 
 	$: ({ value } = portableText);
 
-	$: console.log(`value in /menu/ portableText component: ${JSON.stringify(value, null, 2)}`);
+	// $: console.log(`value in /menu/ portableText component: ${JSON.stringify(value, null, 2)}`);
 </script>
 
 <div>
@@ -42,12 +42,6 @@
 			{#each value.items as item}
 				<MenuItem data={item} />
 			{/each}
-			<!-- {#if section.description}
-				<p>{section.description}</p>
-			{/if}
-			{#each section.items as item} -->
-			<!-- <MenuItem {item} /> -->
-			<!-- {/each} -->
 		</Stack>
 	</ToggleSection>
 </div>
