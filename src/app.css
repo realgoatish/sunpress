@@ -280,8 +280,12 @@ ul {
  list-style: none;
 }
  
-.content-section--spacer {
+.content-section--spacer--big {
  padding-block: var(--s2);
+}
+
+.content-section--spacer--biggish {
+  padding-block: var(--s1);
 }
  
 .flex {
@@ -294,16 +298,16 @@ ul {
  
 .nav-link {
  color: var(--color-secondary--dark);
- font-size: var(--font-size-biggish)
-}
-
-.selected::after {
-  content: '✓';
+ font-size: var(--font-size-biggish);
 }
  
 .nav-link:hover, .nav-link:active {
  color: var(--color-primary--white);
  background-color: var(--color-secondary--dark);
+}
+
+.nav-link:active, .selected::after {
+  content: '✓';
 }
  
 a {

@@ -12,14 +12,14 @@
 	$: [socialNav] = navigationSections.filter((item) => item.id === 'social-nav');
 	$: [sitewideNav] = navigationSections.filter((item) => item.id === 'sitewide-nav');
 
-	$: console.log(`address in header: ${JSON.stringify(address, null, 2)}`);
-	$: console.log(`logo in header: ${JSON.stringify(logo, null, 2)}`);
-	$: console.log(`openingHours in header: ${JSON.stringify(openingHours, null, 2)}`);
-	$: console.log(`socialNav in header: ${JSON.stringify(socialNav, null, 2)}`);
-	$: console.log(`sitewideNav in header: ${JSON.stringify(sitewideNav, null, 2)}`);
+	// $: console.log(`address in header: ${JSON.stringify(address, null, 2)}`);
+	// $: console.log(`logo in header: ${JSON.stringify(logo, null, 2)}`);
+	// $: console.log(`openingHours in header: ${JSON.stringify(openingHours, null, 2)}`);
+	// $: console.log(`socialNav in header: ${JSON.stringify(socialNav, null, 2)}`);
+	// $: console.log(`sitewideNav in header: ${JSON.stringify(sitewideNav, null, 2)}`);
 </script>
 
-<header>
+<header class="content-section--spacer--biggish">
 	<Center max="var(--measure)" gutters="var(--s-1)">
 		<Sidebar side="left" sideWidth="var(--s5)" contentMin="40%" space="var(--s-3)">
 			<div slot="first-child" class="logo-social-contact">

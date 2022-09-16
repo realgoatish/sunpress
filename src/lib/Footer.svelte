@@ -7,8 +7,8 @@
 	$: [socialNav] = data.filter((item) => item.id === 'social-nav');
 	$: [sitewideNav] = data.filter((item) => item.id === 'sitewide-nav');
 
-	$: console.log(`socialNav in footer: ${JSON.stringify(socialNav, null, 2)}`);
-	$: console.log(`sitewideNav in footer: ${JSON.stringify(sitewideNav, null, 2)}`);
+	// $: console.log(`socialNav in footer: ${JSON.stringify(socialNav, null, 2)}`);
+	// $: console.log(`sitewideNav in footer: ${JSON.stringify(sitewideNav, null, 2)}`);
 </script>
 
 <footer>

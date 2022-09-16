@@ -33,6 +33,34 @@ export const homePageQuery = () => `*[_type == "page" && title == "Home"]{
 }[0]`;
 
 export const menuPageQuery = () => `*[_type == "page" && menu == true]{
+  _createdAt,
+  _updatedAt,
+  "slug": slug.current,
   title,
-  body[]
+  body[]{
+    ...,
+    _type == "menuSectionReference" => @->{
+      "id": menuSectionId.current,
+      title,
+      description,
+      mods[]->{
+        title,
+        "id": menuSectionModsId.current,
+        mods[]->{
+          name,
+          price
+        }
+      },
+      items[]->{
+        "id": menuItemId.current,
+        title,
+        price,
+        description,
+        mods[]->{
+          name,
+          price
+        }
+      }
+    }
+  }
 }[0]`;
