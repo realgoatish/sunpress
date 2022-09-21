@@ -14,19 +14,18 @@
 			</li> -->
 		{:else if item.text === 'map'}
 			<li>
-				<a href={item.link.externalUrl}><Icon iconId="#icon-map" aria-label={item.description} /></a
-				>
+				<a href={item.link.externalUrl}><Icon iconId="#icon-map" ariaLabel={item.description} /></a>
 			</li>
 		{:else if item.text === 'facebook'}
 			<li>
 				<a href={item.link.externalUrl}
-					><Icon iconId="#icon-facebook" aria-label={item.description} /></a
+					><Icon iconId="#icon-facebook" ariaLabel={item.description} /></a
 				>
 			</li>
 		{:else if item.text === 'instagram'}
 			<li>
 				<a href={item.link.externalUrl}
-					><Icon iconId="#icon-instagram" aria-label={item.description} /></a
+					><Icon iconId="#icon-instagram" ariaLabel={item.description} /></a
 				>
 			</li>
 		{/if}
