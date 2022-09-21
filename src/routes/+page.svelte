@@ -9,10 +9,11 @@
 	// $: console.log(`homePage data on the front end: ${JSON.stringify(data, null, 2)}`);
 </script>
 
-<main>
+<main id="main">
 	<div>
 		<Center max="var(--measure)" gutters="var(--s-1)">
 			<Stack>
+				<h1>Welcome to SunPress</h1>
 				<PortableText
 					value={data.body}
 					components={{

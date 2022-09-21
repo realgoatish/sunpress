@@ -17,7 +17,7 @@
 	// $: [dulcero] = data.body.filter((section) => section.id === 'dulcero');
 </script>
 
-<main>
+<main id="main">
 	<div>
 		<Center max="var(--measure)" gutters="var(--s-1)">
 			<div>
