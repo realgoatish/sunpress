@@ -15,11 +15,14 @@
 	// $: console.log(`address in header: ${JSON.stringify(address, null, 2)}`);
 	// $: console.log(`logo in header: ${JSON.stringify(logo, null, 2)}`);
 	// $: console.log(`openingHours in header: ${JSON.stringify(openingHours, null, 2)}`);
-	// $: console.log(`socialNav in header: ${JSON.stringify(socialNav, null, 2)}`);
+	$: console.log(`socialNav in header: ${JSON.stringify(socialNav, null, 2)}`);
 	// $: console.log(`sitewideNav in header: ${JSON.stringify(sitewideNav, null, 2)}`);
 </script>
 
 <header class="content-section--spacer--biggish">
+	<div class="skip-link screen-reader-only">
+		<a href="#main">Skip to Content</a>
+	</div>
 	<Center max="var(--measure)" gutters="var(--s-1)">
 		<Sidebar side="left" sideWidth="var(--s5)" contentMin="40%" space="var(--s-3)">
 			<div slot="first-child" class="logo-social-contact">
@@ -45,14 +48,16 @@
 				</div>
 			</div>
 			<div slot="last-child" class="site-navigation">
-				<nav>
+				<nav aria-labelledby="site-nav-label">
+					<!-- <h2 id="site-nav-label" class="screen-reader-only">Site</h2> -->
 					<Cluster wrapperElement="ul" justify="center" space="var(--s-1)">
 						{#each sitewideNav.items as item}
 							<li>
 								<a
 									href={item.link.internal.url}
 									class="nav-link"
-									class:selected={$page.url.pathname === item.link.internal.url}>{item.text}</a
+									class:selected={$page.url.pathname === item.link.internal.url}
+									aria-current={$page.url.pathname === item.link.internal.url}>{item.text}</a
 								>
 							</li>
 						{/each}
