@@ -37,7 +37,7 @@
 						/>
 					</Frame>
 				</div>
-				<address class="text-center">
+				<div class="text-center">
 					<div class="social-icons">
 						<Social data={socialNav} />
 					</div>
@@ -48,7 +48,7 @@
 						{`${address.streetAddress},`}<br />
 						<span>{`${address.city}, ${address.state} ${address.zip}`}</span>
 					</p>
-				</address>
+				</div>
 			</div>
 			<div slot="last-child" class="site-navigation">
 				<SiteNav data={sitewideNav} />
