@@ -25,7 +25,7 @@
 		<a href="#main">Skip to Content</a>
 	</div>
 	<Center max="var(--measure)" gutters="var(--s-1)">
-		<Sidebar side="left" sideWidth="var(--s5)" contentMin="50%" space="var(--s-3)">
+		<Sidebar side="left" sideWidth="var(--s5)" contentMin="55%" space="var(--s-3)">
 			<div slot="first-child" class="logo-social-contact">
 				<div class="logo-wrapper">
 					<Frame ratio="1.5:3.5">
@@ -48,6 +48,8 @@
 						{`${address.streetAddress},`}<br />
 						<span>{`${address.city}, ${address.state} ${address.zip}`}</span>
 					</p>
+					<h2 class="screen-reader-only">Hours of Operation</h2>
+					<!-- add your processing of timemap to produce hours of operation here -->
 				</div>
 			</div>
 			<div slot="last-child" class="site-navigation">
