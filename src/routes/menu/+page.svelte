@@ -36,9 +36,3 @@
 		</Center>
 	</div>
 </main>
-
-<style>
-	main h1 {
-		color: var(--color-primary--black);
-	}
-</style>
