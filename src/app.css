@@ -301,14 +301,14 @@ ul {
  font-size: var(--font-size-biggish);
 }
  
-.nav-link:hover, .nav-link:active {
+.nav-link:hover, .nav-link:active, .selected {
  color: var(--color-primary--white);
  background-color: var(--color-secondary--dark);
 }
 
-.nav-link:active, .selected::after {
+/* .nav-link:active, .selected::after {
   content: '✓';
-}
+} */
  
 a {
  color: var(--color-secondary--white);
@@ -321,6 +321,15 @@ a:hover, a:active {
  
 .text-small {
  font-size: var(--font-size-small);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.social-icons {
+  font-size: var(--s3);
+  line-height: 1;
 }
  
 .screen-reader-only {
