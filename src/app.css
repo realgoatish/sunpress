@@ -265,6 +265,7 @@ h1, h2, h3, h4, h5, h6 {
  
 h1 {
  font-size: var(--font-size-big);
+ color: var(--color-secondary);
 }
  
 h2 {
@@ -305,10 +306,6 @@ ul {
  color: var(--color-primary--white);
  background-color: var(--color-secondary--dark);
 }
-
-/* .nav-link:active, .selected::after {
-  content: '✓';
-} */
  
 a {
  color: var(--color-secondary--white);
