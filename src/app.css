@@ -265,12 +265,12 @@ h1, h2, h3, h4, h5, h6 {
  
 h1 {
  font-size: var(--font-size-big);
- color: var(--color-secondary);
+ color: var(--color-secondary--light);
 }
  
 h2 {
  font-size: var(--font-size-biggish);
- color: var(--color-secondary--light);
+ color: var(--color-secondary);
 }
  
 h3 {
