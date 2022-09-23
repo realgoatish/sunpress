@@ -11,17 +11,16 @@
 	// $: console.log(`sitewideNav in footer: ${JSON.stringify(sitewideNav, null, 2)}`);
 </script>
 
-<footer>
+<footer class="content-section--spacer--biggish">
 	<Center max="var(--measure)" intrinsic={true}>
-		<div>
+		<div class="social-icons">
 			<Social data={socialNav} />
 		</div>
 	</Center>
 </footer>
 
 <style>
-	div {
+	footer div {
 		max-inline-size: var(--s5);
-		font-size: var(--s3);
 	}
 </style>
