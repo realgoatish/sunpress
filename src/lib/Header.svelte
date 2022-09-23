@@ -1,7 +1,8 @@
 <script>
-	import { page } from '$app/stores';
-	import { Center, Frame, Cluster, Sidebar } from '@realgoatish/svelte-every-layout';
+	import { Center, Frame, Sidebar } from '@realgoatish/svelte-every-layout';
+	import { Section, H } from 'tusculum';
 	import Social from './Social.svelte';
+	import SiteNav from './SiteNav.svelte';
 
 	export let data;
 
@@ -24,72 +25,43 @@
 		<a href="#main">Skip to Content</a>
 	</div>
 	<Center max="var(--measure)" gutters="var(--s-1)">
-		<Sidebar side="left" sideWidth="var(--s5)" contentMin="40%" space="var(--s-3)">
+		<Sidebar side="left" sideWidth="var(--s5)" contentMin="50%" space="var(--s-3)">
 			<div slot="first-child" class="logo-social-contact">
 				<div class="logo-wrapper">
 					<Frame ratio="1.5:3.5">
 						<img
-							alt={logo.alt}
+							alt=""
 							srcset={`${logo.image.desktop} 2400w, ${logo.image.tablet} 1600w, ${logo.image.mobile} 800w`}
 							sizes="50vw"
-							src="{logo.image.fullSize}}"
+							src={logo.image.fullSize}
 						/>
 					</Frame>
 				</div>
-				<div class="social">
-					<Social data={socialNav} />
-				</div>
-				<div class="phone-address-hours">
-					<span>856-544-9355</span><br />
-					<span>{`${address.streetAddress},`}</span><br />
-					<span>{`${address.city}, ${address.state} ${address.zip}`}</span>
-					<br />
-					<span />
-				</div>
+				<address class="text-center">
+					<div class="social-icons">
+						<Social data={socialNav} />
+					</div>
+					<h2 class="screen-reader-only">Phone Number</h2>
+					<p>856-544-9355</p>
+					<h2 class="screen-reader-only">Address</h2>
+					<p>
+						{`${address.streetAddress},`}<br />
+						<span>{`${address.city}, ${address.state} ${address.zip}`}</span>
+					</p>
+				</address>
 			</div>
 			<div slot="last-child" class="site-navigation">
-				<nav aria-labelledby="site-nav-label">
-					<!-- <h2 id="site-nav-label" class="screen-reader-only">Site</h2> -->
-					<Cluster wrapperElement="ul" justify="center" space="var(--s-1)">
-						{#each sitewideNav.items as item}
-							<li>
-								<a
-									href={item.link.internal.url}
-									class="nav-link"
-									class:selected={$page.url.pathname === item.link.internal.url}
-									aria-current={$page.url.pathname === item.link.internal.url}>{item.text}</a
-								>
-							</li>
-						{/each}
-					</Cluster>
-				</nav>
+				<SiteNav data={sitewideNav} />
 			</div>
 		</Sidebar>
 	</Center>
 </header>
 
 <style>
-	header .logo-social-contact {
+	header :global(.logo-social-contact) {
 		min-inline-size: var(--s5);
-		/* max-inline-size: clamp(28vw, 30vw, 35vw); */
+		max-inline-size: clamp(28vw, 30vw, 35vw);
 		margin: 0 auto;
-	}
-	header .phone-address-hours {
-		text-align: center;
-	}
-
-	/* header .logo-wrapper {
-		max-inline-size: clamp(25vw, 27vw, 35vw);
-		margin: 0 auto;
-	} */
-
-	header div.social {
-		font-size: var(--s3);
-	}
-
-	header :global(div.social ul),
-	header div.social li {
-		line-height: 1;
 	}
 
 	header .site-navigation {
