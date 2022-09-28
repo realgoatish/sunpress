@@ -275,6 +275,7 @@ h2 {
  
 h3 {
  font-weight: 600;
+ color: var(--color-secondary--dark);
 }
  
 ul {
@@ -290,7 +291,11 @@ ul {
 }
  
 .flex {
- display: flex;
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
 }
  
 .space-between {

@@ -12,11 +12,11 @@
 	<Cluster wrapperElement="ul" justify="space-evenly" space="var(--s-2)" aria={{ labelledby: id }}>
 		{#each data.items as item}
 			{#if item.text === 'phone'}
-				<!-- <li>
-					<a href={item.link.externalUrl}
+				<li>
+					<a href={`tel:+1-${item.link.externalUrl}`}
 						><Icon iconId="#icon-phone" aria-label={item.description} /></a
 					>
-				</li> -->
+				</li>
 			{:else if item.text === 'map'}
 				<li>
 					<a href={item.link.externalUrl}

@@ -1,4 +1,4 @@
-export const timeMap = (time) => {
+export const mapTimes = (time) => {
 	time = time.split(':'); // convert to array
 
 	// fetch

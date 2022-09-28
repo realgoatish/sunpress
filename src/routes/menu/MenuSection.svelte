@@ -40,8 +40,19 @@
 				{/each}
 			{/if}
 			{#each value.items as item}
-				<MenuItem data={item} />
+				<div class="menu-item">
+					<MenuItem data={item} />
+				</div>
 			{/each}
 		</Stack>
 	</ToggleSection>
 </div>
+
+<style>
+	div .menu-item {
+		border-block-start: 2px solid var(--color-primary--dark);
+		/* sync top spacing up w/ bottom spacing provided by the Stack component
+    that wraps all the children in the menu section */
+		padding-block-start: var(--space, 1rem);
+	}
+</style>

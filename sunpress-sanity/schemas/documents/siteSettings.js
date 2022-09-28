@@ -48,14 +48,20 @@ export default {
 		},
 		{
 			name: 'openingHours',
-			type: 'object',
+			type: 'array',
 			title: 'Hours of Operation',
-			fields: [
+			initialValue: [
 				{
 					name: 'monday',
 					type: 'object',
 					title: 'Monday Hours',
 					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Monday',
+							readOnly: true
+						},
 						{
 							name: 'opens',
 							type: 'militaryTime'
@@ -72,6 +78,12 @@ export default {
 					title: 'Tuesday Hours',
 					fields: [
 						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Tuesday',
+							readOnly: true
+						},
+						{
 							name: 'opens',
 							type: 'militaryTime'
 						},
@@ -86,6 +98,12 @@ export default {
 					type: 'object',
 					title: 'Wednesday Hours',
 					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Wednesday',
+							readOnly: true
+						},
 						{
 							name: 'opens',
 							type: 'militaryTime'
@@ -102,6 +120,12 @@ export default {
 					title: 'Thursday Hours',
 					fields: [
 						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Thursday',
+							readOnly: true
+						},
+						{
 							name: 'opens',
 							type: 'militaryTime'
 						},
@@ -116,6 +140,12 @@ export default {
 					type: 'object',
 					title: 'Friday Hours',
 					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Friday',
+							readOnly: true
+						},
 						{
 							name: 'opens',
 							type: 'militaryTime'
@@ -132,6 +162,12 @@ export default {
 					title: 'Saturday Hours',
 					fields: [
 						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Saturday',
+							readOnly: true
+						},
+						{
 							name: 'opens',
 							type: 'militaryTime'
 						},
@@ -146,6 +182,161 @@ export default {
 					type: 'object',
 					title: 'Sunday Hours',
 					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Sunday',
+							readOnly: true
+						},
+						{
+							name: 'opens',
+							type: 'militaryTime'
+						},
+						{
+							name: 'closes',
+							type: 'militaryTime'
+						}
+					]
+				}
+			],
+			of: [
+				{
+					name: 'monday',
+					type: 'object',
+					title: 'Monday Hours',
+					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Monday',
+							readOnly: true
+						},
+						{
+							name: 'opens',
+							type: 'militaryTime'
+						},
+						{
+							name: 'closes',
+							type: 'militaryTime'
+						}
+					]
+				},
+				{
+					name: 'tuesday',
+					type: 'object',
+					title: 'Tuesday Hours',
+					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Tuesday',
+							readOnly: true
+						},
+						{
+							name: 'opens',
+							type: 'militaryTime'
+						},
+						{
+							name: 'closes',
+							type: 'militaryTime'
+						}
+					]
+				},
+				{
+					name: 'wednesday',
+					type: 'object',
+					title: 'Wednesday Hours',
+					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Wednesday',
+							readOnly: true
+						},
+						{
+							name: 'opens',
+							type: 'militaryTime'
+						},
+						{
+							name: 'closes',
+							type: 'militaryTime'
+						}
+					]
+				},
+				{
+					name: 'thursday',
+					type: 'object',
+					title: 'Thursday Hours',
+					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Thursday',
+							readOnly: true
+						},
+						{
+							name: 'opens',
+							type: 'militaryTime'
+						},
+						{
+							name: 'closes',
+							type: 'militaryTime'
+						}
+					]
+				},
+				{
+					name: 'friday',
+					type: 'object',
+					title: 'Friday Hours',
+					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Friday',
+							readOnly: true
+						},
+						{
+							name: 'opens',
+							type: 'militaryTime'
+						},
+						{
+							name: 'closes',
+							type: 'militaryTime'
+						}
+					]
+				},
+				{
+					name: 'saturday',
+					type: 'object',
+					title: 'Saturday Hours',
+					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Saturday',
+							readOnly: true
+						},
+						{
+							name: 'opens',
+							type: 'militaryTime'
+						},
+						{
+							name: 'closes',
+							type: 'militaryTime'
+						}
+					]
+				},
+				{
+					name: 'sunday',
+					type: 'object',
+					title: 'Sunday Hours',
+					fields: [
+						{
+							name: 'day',
+							type: 'string',
+							initialValue: 'Sunday',
+							readOnly: true
+						},
 						{
 							name: 'opens',
 							type: 'militaryTime'
