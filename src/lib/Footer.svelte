@@ -21,6 +21,6 @@
 
 <style>
 	footer div {
-		max-inline-size: var(--s5);
+		max-inline-size: max-content;
 	}
 </style>

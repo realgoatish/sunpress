@@ -9,7 +9,7 @@
 
 <div>
 	<h2 class="screen-reader-only" {id}>{data.description}</h2>
-	<Cluster wrapperElement="ul" justify="space-evenly" space="var(--s-2)" aria={{ labelledby: id }}>
+	<Cluster wrapperElement="ul" justify="center" space="var(--s-2)" aria={{ labelledby: id }}>
 		{#each data.items as item}
 			{#if item.text === 'phone'}
 				<li>

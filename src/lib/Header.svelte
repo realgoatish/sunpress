@@ -12,6 +12,8 @@
 	$: ({ address, logo, navigationSections, openingHours } = data);
 
 	$: [socialNav] = navigationSections.filter((item) => item.id === 'social-nav');
+	$: [phone] = socialNav.items.filter((item) => item.text === 'phone');
+	$: console.log(`PHONE: ${JSON.stringify(phone, null, 2)}`);
 	$: [sitewideNav] = navigationSections.filter((item) => item.id === 'sitewide-nav');
 	$: hoursOfOperation = mapHoursOfOperation(openingHours);
 
@@ -30,7 +32,10 @@
 		<a href="#main">Skip to Content</a>
 	</div>
 	<Center max="var(--measure)" gutters="var(--s-1)">
-		<Sidebar side="left" sideWidth="var(--s5)" contentMin="60%" space="var(--s-3)">
+		<!-- NOTE: this is a rare instance where we're hacking for pixel-perfection to get all 
+         the icons on one line. you'll need to adjust sideWidth value if more icons are
+         added to .social-icons. -->
+		<Sidebar side="left" sideWidth="max(295px, 35%)" contentMin="40%" space="var(--s-3)">
 			<div slot="first-child" class="logo-social-contact">
 				<div class="logo-wrapper">
 					<Frame ratio="1.5:3.5">
@@ -47,7 +52,7 @@
 						<Social data={socialNav} />
 					</div>
 					<h2 class="screen-reader-only">Phone Number</h2>
-					<p>856-544-9355</p>
+					<p>{phone.link.externalUrl}</p>
 					<h2 class="screen-reader-only">Address</h2>
 					<p class="flex column">
 						<span>{`${address.streetAddress},`}</span>
