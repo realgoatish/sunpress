@@ -1,4 +1,4 @@
-import { SANITY_PROJECT_ID, SANITY_DATASET } from '$env/static/private';
+import { SANITY_PROJECT_ID, SANITY_DATASET, SANITY_IMAGE_URL } from '$env/static/private';
 
 export const processBlockImageUrls = (response) => {
 	const cloneResponse = JSON.parse(JSON.stringify(response));
@@ -25,7 +25,7 @@ export const processBlockImageUrls = (response) => {
 
 		const strippedPrefix = dashReplacedWithDot.replace('image-', '');
 
-		const sanityImageUrl = `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${strippedPrefix}`;
+		const sanityImageUrl = `${SANITY_IMAGE_URL}/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${strippedPrefix}`;
 
 		const newImageAttribute = {
 			mobile: `${sanityImageUrl}?w=800&auto=format`,
