@@ -28,8 +28,6 @@ export const mapHoursOfOperation = (input) => {
 		return acc;
 	}, []);
 
-	console.log(aggregated);
-
 	// we now have an array that resembles our input, except aggregated days appear as a start (weekday prop) and end (untilWeekday prop). So we need to map these to strings accordingly:
 	return aggregated.map((obj) => {
 		let day = obj.day;
