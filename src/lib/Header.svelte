@@ -13,16 +13,16 @@
 
 	$: [socialNav] = navigationSections.filter((item) => item.id === 'social-nav');
 	$: [phone] = socialNav.items.filter((item) => item.text === 'phone');
-	$: console.log(`PHONE: ${JSON.stringify(phone, null, 2)}`);
+	// $: console.log(`PHONE: ${JSON.stringify(phone, null, 2)}`);
 	$: [sitewideNav] = navigationSections.filter((item) => item.id === 'sitewide-nav');
 	$: hoursOfOperation = mapHoursOfOperation(openingHours);
 
 	// $: console.log(`address in header: ${JSON.stringify(address, null, 2)}`);
 	// $: console.log(`logo in header: ${JSON.stringify(logo, null, 2)}`);
-	$: console.log(`openingHours in header: ${JSON.stringify(openingHours, null, 2)}`);
-	$: console.log(
-		`openingHours mapped to Hours of Operation: ${JSON.stringify(hoursOfOperation, null, 2)}`
-	);
+	// $: console.log(`openingHours in header: ${JSON.stringify(openingHours, null, 2)}`);
+	// $: console.log(
+	// 	`openingHours mapped to Hours of Operation: ${JSON.stringify(hoursOfOperation, null, 2)}`
+	// );
 	// $: console.log(`socialNav in header: ${JSON.stringify(socialNav, null, 2)}`);
 	// $: console.log(`sitewideNav in header: ${JSON.stringify(sitewideNav, null, 2)}`);
 </script>

@@ -2,7 +2,7 @@
 import { error } from '@sveltejs/kit';
 import { layoutQuery } from '$lib/js/sanityQueries';
 import { client } from '$lib/js/sanityClient'
-import { processLogoImageUrls } from '$lib/js/processLogoImageUrls'
+import { processLayoutLogoUrl } from '$lib/js/sanityImages'
 
 export const prerender = true
 
@@ -12,10 +12,10 @@ export async function load() {
   const response = await client.fetch(layoutQuery()).then(data => {
     //TODO remove this perf testing code
     const t0 = performance.now()
-    const processedResponse = processLogoImageUrls(data)
+    const processedResponse = processLayoutLogoUrl(data)
     const t1 = performance.now()
 
-    console.log(`call to processBlockImageUrls took ${t1 - t0} milliseconds`)
+    console.log(`call to processLogoImageUrls took ${t1 - t0} milliseconds`)
 
     return processedResponse
   })

@@ -14,7 +14,7 @@
 			{#if item.text === 'phone'}
 				<li>
 					<a href={`tel:+1-${item.link.externalUrl}`}
-						><Icon iconId="#icon-phone" aria-label={item.description} /></a
+						><Icon iconId="#icon-phone" ariaLabel={item.description} /></a
 					>
 				</li>
 			{:else if item.text === 'map'}

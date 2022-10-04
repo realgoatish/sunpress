@@ -55,6 +55,7 @@ export const menuPageQuery = () => `*[_type == "page" && menu == true]{
       },
       items[]->{
         "id": menuItemId.current,
+        figure,
         title,
         price,
         description,
