@@ -1,6 +1,8 @@
+import { test } from '$lib/js/sanityImages';
+
 export const layoutQuery = () => `*[_type == "siteSettings"]{
-  title,
-  description,
+  siteName,
+  siteDescription,
   address,
   openingHours,
   logo{
@@ -30,7 +32,11 @@ export const layoutQuery = () => `*[_type == "siteSettings"]{
 
 // TODO you'll have to query this by some field that's not editable long-term
 export const homePageQuery = () => `*[_type == "page" && title == "Home"]{
+  _createdAt,
+  _updatedAt,
   title,
+  description,
+  figure,
   body[]
 }[0]`;
 
@@ -39,6 +45,8 @@ export const menuPageQuery = () => `*[_type == "page" && menu == true]{
   _updatedAt,
   "slug": slug.current,
   title,
+  description,
+  figure,
   body[]{
     ...,
     _type == "menuSectionReference" => @->{

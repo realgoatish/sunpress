@@ -2,6 +2,8 @@
 	import { Center } from '@realgoatish/svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
 	import MenuSection from './MenuSection.svelte';
+	import Seo from '$lib/Seo.svelte';
+	import { page } from '$app/stores';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -16,6 +18,8 @@
 	// $: [soupsAndSides] = data.body.filter((section) => section.id === 'soups-and-sides');
 	// $: [dulcero] = data.body.filter((section) => section.id === 'dulcero');
 </script>
+
+<Seo />
 
 <main id="main">
 	<div>

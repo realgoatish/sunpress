@@ -2,12 +2,15 @@
 	import { Center, Stack } from '@realgoatish/svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
 	import Figure from '$lib/Figure.svelte';
+	import Seo from '$lib/Seo.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
 	// $: console.log(`homePage data on the front end: ${JSON.stringify(data, null, 2)}`);
 </script>
+
+<Seo />
 
 <main id="main">
 	<div>
