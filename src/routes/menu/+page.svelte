@@ -2,11 +2,29 @@
 	import { Center } from '@realgoatish/svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
 	import MenuSection from './MenuSection.svelte';
+	import Seo from '$lib/Seo.svelte';
+	import { page } from '$app/stores';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	// $: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
+	$: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
+
+	// $: seoApi = {
+	// 	siteName: data.siteName,
+	// 	siteDescription: data.siteDescription,
+	// 	siteUrl: $page.url.origin + '/',
+	// 	address: data.address,
+	// 	logo: data.logo,
+	// 	datePublished: data._createdAt,
+	// 	dateModified: data._updatedAt,
+	// 	openingHoursSpecification: data.openingHours,
+	// 	image: data.figure,
+	// 	canonical: $page.url.href,
+	//   title: data.title,
+	//   description: data.description
+	// 	// TODO add sameAs, telephone, hasMap
+	// };
 
 	// $: [starters] = data.body.filter((section) => section.id === 'starters');
 	// $: [tacos] = data.body.filter((section) => section.id === 'tacos');
@@ -16,6 +34,8 @@
 	// $: [soupsAndSides] = data.body.filter((section) => section.id === 'soups-and-sides');
 	// $: [dulcero] = data.body.filter((section) => section.id === 'dulcero');
 </script>
+
+<Seo />
 
 <main id="main">
 	<div>

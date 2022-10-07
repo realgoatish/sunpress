@@ -4,7 +4,7 @@
 
 	export let data;
 
-	$: console.log(`data received for menuItem: ${JSON.stringify(data, null, 2)}`);
+	// $: console.log(`data received for menuItem: ${JSON.stringify(data, null, 2)}`);
 </script>
 
 <div class="menu-item-wrapper">

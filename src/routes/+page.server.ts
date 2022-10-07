@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { homePageQuery } from '$lib/js/sanityQueries'
 import { client } from '$lib/js/sanityClient'
-import { processBlockImageUrls } from '$lib/js/sanityImages'
+import { processBlockImageUrls, processPageSeoImageUrls } from '$lib/js/sanityImages'
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
@@ -16,19 +16,15 @@ export async function load() {
 
     const processedBlockImages = processBlockImageUrls(imageObjects)
 
-    const clonedResponse = JSON.parse(JSON.stringify(data));
-
-    const { body } = clonedResponse;
-
     // replace the image objects with matching _key properties on the cloned response
     // body with the new ones you just created
-    const newBody = body.map((obj) => processedBlockImages.find((o) => o._key === obj._key) || obj);
+    const newBody = data.body.map((obj) => processedBlockImages.find((o) => o._key === obj._key) || obj);
 
-    clonedResponse.body = newBody;
+    data.body = newBody
 
-    console.log(`finished response: ${JSON.stringify(clonedResponse, null, 2)}`);
+    data.figure = processPageSeoImageUrls(data.figure)
 
-    return clonedResponse;
+    return data
 
   })
 

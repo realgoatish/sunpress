@@ -5,12 +5,12 @@ export default {
 	title: 'Global Site Settings',
 	fields: [
 		{
-			name: 'title',
+			name: 'siteName',
 			type: 'string',
 			title: 'Site Name'
 		},
 		{
-			name: 'description',
+			name: 'siteDescription',
 			type: 'string',
 			title: 'Site Description'
 		},
