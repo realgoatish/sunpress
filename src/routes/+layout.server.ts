@@ -4,7 +4,7 @@ import { layoutQuery } from '$lib/js/sanityQueries';
 import { client } from '$lib/js/sanityClient'
 import { processLayoutLogoUrl } from '$lib/js/sanityImages'
 
-export const prerender = true
+// export const prerender = true
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {

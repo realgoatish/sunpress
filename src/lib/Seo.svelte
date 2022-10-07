@@ -42,7 +42,7 @@
 
 	$: restaurantType = {
 		'@type': 'Restaurant',
-		'@id': `${seoApi.siteUrl}#westmont`,
+		'@id': publisherId,
 		name: seoApi.siteName,
 		logo: {
 			'@type': 'ImageObject',
