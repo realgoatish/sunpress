@@ -7,7 +7,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: console.log(`homePage data on the front end: ${JSON.stringify(data, null, 2)}`);
+	// $: console.log(`homePage data on the front end: ${JSON.stringify(data, null, 2)}`);
 </script>
 
 <Seo />

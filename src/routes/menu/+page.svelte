@@ -8,23 +8,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
-
-	// $: seoApi = {
-	// 	siteName: data.siteName,
-	// 	siteDescription: data.siteDescription,
-	// 	siteUrl: $page.url.origin + '/',
-	// 	address: data.address,
-	// 	logo: data.logo,
-	// 	datePublished: data._createdAt,
-	// 	dateModified: data._updatedAt,
-	// 	openingHoursSpecification: data.openingHours,
-	// 	image: data.figure,
-	// 	canonical: $page.url.href,
-	//   title: data.title,
-	//   description: data.description
-	// 	// TODO add sameAs, telephone, hasMap
-	// };
+	// $: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
 
 	// $: [starters] = data.body.filter((section) => section.id === 'starters');
 	// $: [tacos] = data.body.filter((section) => section.id === 'tacos');
