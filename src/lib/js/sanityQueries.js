@@ -75,3 +75,5 @@ export const menuPageQuery = () => `*[_type == "page" && menu == true]{
     }
   }
 }[0]`;
+
+export const sitemapQuery = () => `*[_type == "page"]`;
