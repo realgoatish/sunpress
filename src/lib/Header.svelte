@@ -61,9 +61,9 @@
 					<h2 class="screen-reader-only">Hours of Operation</h2>
 					{#each hoursOfOperation as daysTimes}
 						{#if daysTimes.times === 'Closed'}
-							<p>{`${daysTimes.times} ${daysTimes.days}`}</p>
+							<p class="bold">{`${daysTimes.times} ${daysTimes.days}`}</p>
 						{:else}
-							<p>{daysTimes.days}</p>
+							<p class="bold">{daysTimes.days}</p>
 							<p>{daysTimes.times}</p>
 						{/if}
 					{/each}
@@ -84,6 +84,10 @@
 	header .logo-wrapper {
 		margin: 0 auto;
 		max-inline-size: var(--s5);
+	}
+
+	header .bold {
+		font-weight: 800;
 	}
 
 	header .site-navigation {

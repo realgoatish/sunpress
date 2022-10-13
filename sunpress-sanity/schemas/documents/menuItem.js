@@ -9,6 +9,7 @@ export default {
 			title: 'Menu Item ID (must be unique)'
 		},
 		{
+			// TODO this name needs to go away so you can
 			name: 'figure',
 			type: 'figure'
 		},
