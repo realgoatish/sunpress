@@ -18,13 +18,9 @@ const processImageRef = (imageRef) => {
 	return strippedPrefix;
 };
 
-export const processLayoutLogoUrl = (response) => {
-	const cloneResponse = JSON.parse(JSON.stringify(response));
-
-	const logo = cloneResponse.logo;
-
+export const processLayoutLogoUrl = (figure) => {
 	const sanityImageUrl = `${SANITY_BASE_IMAGE_URL}/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${processImageRef(
-		logo.image.asset._ref
+		figure.image.asset._ref
 	)}`;
 
 	const newImageAttribute = {
@@ -36,15 +32,11 @@ export const processLayoutLogoUrl = (response) => {
 	};
 
 	const newLogo = {
-		...logo,
+		alt: figure.alt,
 		image: newImageAttribute
 	};
 
-	cloneResponse.logo = newLogo;
-
-	// console.log(`finished response: ${JSON.stringify(cloneResponse, null, 2)}`);
-
-	return cloneResponse;
+	return newLogo;
 };
 
 export const processBlockImageUrls = (imageObjects) => {
@@ -62,6 +54,8 @@ export const processBlockImageUrls = (imageObjects) => {
 		};
 
 		return {
+			// can't strip out everything but alt & image attrs because PortableText component needs
+			// _key & _type attrs too
 			...item,
 			image: newImageAttribute
 		};
@@ -70,8 +64,8 @@ export const processBlockImageUrls = (imageObjects) => {
 	return newImageObjects;
 };
 
-export const processMenuImageUrls = (imageObjects) => {
-	const newImageObjects = imageObjects.map((item) => {
+export const processMenuImageUrls = (menuItems) => {
+	const newMenuItems = menuItems.map((item) => {
 		const sanityImageUrl = `${SANITY_BASE_IMAGE_URL}/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${processImageRef(
 			item.figure.image.asset._ref
 		)}`;
@@ -93,7 +87,7 @@ export const processMenuImageUrls = (imageObjects) => {
 		};
 	});
 
-	return newImageObjects;
+	return newMenuItems;
 };
 
 export const processPageSeoImageUrls = (figure) => {
@@ -114,22 +108,10 @@ export const processPageSeoImageUrls = (figure) => {
 	};
 };
 
-export const sitemapHomePageImageUrls = (imageObject) => {
+export const sitemapImageUrls = (imageObjects) => {
 	const newImageObjects = imageObjects.map((item) => {
 		const sanityImageUrl = `${SANITY_BASE_IMAGE_URL}/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${processImageRef(
 			item.image.asset._ref
-		)}`;
-
-		return sanityImageUrl;
-	});
-
-	return newImageObjects;
-};
-
-export const sitemapMenuImageUrls = (imageObject) => {
-	const newImageObjects = imageObjects.map((item) => {
-		const sanityImageUrl = `${SANITY_BASE_IMAGE_URL}/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${processImageRef(
-			item.figure.image.asset._ref
 		)}`;
 
 		return sanityImageUrl;

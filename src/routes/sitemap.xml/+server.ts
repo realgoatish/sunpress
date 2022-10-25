@@ -1,48 +1,34 @@
 import { error } from '@sveltejs/kit';
-import { homePageQuery, menuPageQuery } from '$lib/js/sanityQueries'
+import { sitemapQuery } from '$lib/js/sanityQueries'
 import { client } from '$lib/js/sanityClient'
-import { sitemapHomePageImageUrls, sitemapMenuImageUrls } from '$lib/js/sanityImages'
+import { sitemapImageUrls } from '$lib/js/sanityImages'
 
 /** @type {import('./$types').PageServerLoad} */
 export async function GET() {
-  const homePageImages = await client.fetch(homePageQuery()).then(data => {
 
-    const imageObjects = data?.body?.filter((item) => item?._type === 'figure' && item?.image);
-  
-    if (!imageObjects.length) {
-      return data;
-    }
+    const imagesFromPages = await client.fetch(sitemapQuery()).then(({ rawHomePageImages, rawMenuPageImages }) => {
 
-    const processedHomePageImages = sitemapHomePageImageUrls(imageObjects)
+      const homeNoNulls = rawHomePageImages.filter(data => data !== null)
+      const menuNoNulls = rawMenuPageImages.filter(data => data !== null)
 
-    return processedHomePageImages
-  })
+      const homePageImages = sitemapImageUrls(homeNoNulls)
+      const menuPageImages = sitemapImageUrls(menuNoNulls)
 
-  const menuPageImages = await client.fetch(menuPageQuery()).then(data => {
-    const menuSections = data.body.filter((item) => item._type === 'menuSectionReference')
+      return {
+        homePageImages,
+        menuPageImages
+      }
+    })
 
-    for (let section of menuSections) {
-      let itemsWithImages 
-    }
+    console.log(`imagesFromPages after removing nulls: ${JSON.stringify(imagesFromPages, null, 2)}`)
 
-    // const processedMenuSections = menuSections.map((section) => {
-    //   // do any items in this menuSection have images?
-    //   let itemsWithImages = section.items.filter((item) => item?.figure)
-    //   // if not, just return the section
-    //   if (!itemsWithImages.length) {
-    //     return section
-    //   }
-    //   // if so, process the image refs to give us our sanity image URLs
-    //   let processedMenuItemImages = sitemapMenuImageUrls(itemsWithImages)
+    // TODO filter out nulls
+    // process the image URLs for the front end
+    // feed into XML below
 
-    //   return processedMenuItemImages
+    const { homePageImages, menuPageImages } = imagesFromPages
 
-    // })
-  })
-
-  // console.log(`QUERY RESPONSE: ${JSON.stringify(response, null, 2)}`)
-
-  return new Response(
+    return new Response(
     `
     <?xml version="1.0" encoding="UTF-8" ?>
     <urlset
@@ -53,22 +39,22 @@ export async function GET() {
       xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
       xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
     >
-    <url>
+     <url>
       <loc>https://www.sunpressnj.com/</loc>
       <priority>0.85</priority>
       ${homePageImages.map(img => `
       <image:image>
         <image:loc>${img}</image:loc>
       </image:image>`).join("")}
-    </url>
-    <url>
-      <loc>https://www.sunpressnj.com/</loc>
+     </url>
+     <url>
+      <loc>https://www.sunpressnj.com/menu/</loc>
       <priority>0.85</priority>
       ${menuPageImages.map(img => `
       <image:image>
         <image:loc>${img}</image:loc>
       </image:image>`).join("")}
-    </url>
+      </url>
 
     </urlset>`.trim(),
     {

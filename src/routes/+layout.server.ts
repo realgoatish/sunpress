@@ -10,12 +10,15 @@ import { processLayoutLogoUrl } from '$lib/js/sanityImages'
 export async function load() {
 
   const response = await client.fetch(layoutQuery()).then(data => {
-    //TODO remove this perf testing code
-    const t0 = performance.now()
-    const processedResponse = processLayoutLogoUrl(data)
-    const t1 = performance.now()
 
-    console.log(`call to processLogoImageUrls took ${t1 - t0} milliseconds`)
+    const processedResponse = {
+      ...data,
+      business: {
+        ...data.business,
+        logo: processLayoutLogoUrl(data.business.logo)
+      },
+      logo: processLayoutLogoUrl(data.logo),
+    }
 
     return processedResponse
   })
