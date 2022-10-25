@@ -6,7 +6,10 @@ import { processBlockImageUrls, processPageSeoImageUrls } from '$lib/js/sanityIm
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
 
+
   const response = await client.fetch(homePageQuery()).then(data => {
+
+    console.log(`response from Sanity on Home Page: ${JSON.stringify(data, null, 2)}`)
 
     const imageObjects = data?.body?.filter((item) => item?._type === 'figure' && item?.image);
   
@@ -22,7 +25,7 @@ export async function load() {
 
     data.body = newBody
 
-    data.figure = processPageSeoImageUrls(data.figure)
+    data.currentPage.figure = processPageSeoImageUrls(data.currentPage.figure)
 
     return data
 

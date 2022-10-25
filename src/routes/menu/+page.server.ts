@@ -32,7 +32,7 @@ export async function load() {
 
     data.body = newBody
 
-    data.figure = processPageSeoImageUrls(data.figure)
+    data.currentPage.figure = processPageSeoImageUrls(data.currentPage.figure)
 
     return data
 

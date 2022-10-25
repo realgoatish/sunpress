@@ -1,13 +1,21 @@
 import { test } from '$lib/js/sanityImages';
 
+// siteName,
+// siteDescription,
+
 export const layoutQuery = () => `*[_type == "siteSettings"]{
-  siteName,
-  siteDescription,
   address,
   openingHours,
   logo{
     alt,
     image
+  },
+  "business": {
+    "name": siteName,
+    "description": siteDescription,
+    address,
+    logo,
+    openingHours
   },
   navigationSections[]->{
     title,
@@ -32,21 +40,27 @@ export const layoutQuery = () => `*[_type == "siteSettings"]{
 
 // TODO you'll have to query this by some field that's not editable long-term
 export const homePageQuery = () => `*[_type == "page" && title == "Home"]{
-  _createdAt,
-  _updatedAt,
-  title,
-  description,
-  figure,
+  "currentPage": {
+    "datePublished": _createdAt,
+    "dateModified": _updatedAt,
+    figure,
+    title,
+    description
+  },
   body[]
 }[0]`;
 
 export const menuPageQuery = () => `*[_type == "page" && menu == true]{
-  _createdAt,
-  _updatedAt,
   "slug": slug.current,
   title,
   description,
-  figure,
+  "currentPage": {
+    "datePublished": _createdAt,
+    "dateModified": _updatedAt,
+    figure,
+    title,
+    description
+  },
   body[]{
     ...,
     _type == "menuSectionReference" => @->{
@@ -76,4 +90,7 @@ export const menuPageQuery = () => `*[_type == "page" && menu == true]{
   }
 }[0]`;
 
-export const sitemapQuery = () => `*[_type == "page"]`;
+export const sitemapQuery = () => `{
+  "rawMenuPageImages": *[_type == "page" && menu == true].body[]->items[]->.figure,
+  "rawHomePageImages": *[_type == "page" && menu == false].body[][_type == "figure"]
+}`;
