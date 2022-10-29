@@ -3,6 +3,7 @@ import { error } from '@sveltejs/kit';
 import { layoutQuery } from '$lib/js/sanityQueries';
 import { client } from '$lib/js/sanityClient'
 import { processLayoutLogoUrl } from '$lib/js/sanityImages'
+import { mapOpeningHoursSEO } from '$lib/js/mapHoursOfOperation'
 
 // export const prerender = true
 
@@ -15,10 +16,13 @@ export async function load() {
       ...data,
       business: {
         ...data.business,
-        logo: processLayoutLogoUrl(data.business.logo)
+        logo: processLayoutLogoUrl(data.business.logo),
+        openingHours: mapOpeningHoursSEO(data.business.openingHours)
       },
       logo: processLayoutLogoUrl(data.logo),
     }
+
+    console.log(`response in +layout.server.ts: ${JSON.stringify(processedResponse, null, 2)}`)
 
     return processedResponse
   })

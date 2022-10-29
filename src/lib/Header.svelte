@@ -1,7 +1,7 @@
 <script>
 	import { Center, Frame, Sidebar } from '@realgoatish/svelte-every-layout';
 	import { Section, H } from 'tusculum';
-	import { mapHoursOfOperation } from '$lib/js/mapHoursOfOperation';
+	import { mapOpeningHoursUI } from '$lib/js/mapHoursOfOperation';
 	import Social from './Social.svelte';
 	import SiteNav from './SiteNav.svelte';
 
@@ -15,7 +15,7 @@
 	$: [phone] = socialNav.items.filter((item) => item.text === 'phone');
 	// $: console.log(`PHONE: ${JSON.stringify(phone, null, 2)}`);
 	$: [sitewideNav] = navigationSections.filter((item) => item.id === 'sitewide-nav');
-	$: hoursOfOperation = mapHoursOfOperation(openingHours);
+	$: hoursOfOperation = mapOpeningHoursUI(openingHours);
 
 	// $: console.log(`address in header: ${JSON.stringify(address, null, 2)}`);
 	// $: console.log(`logo in header: ${JSON.stringify(logo, null, 2)}`);
