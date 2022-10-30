@@ -50,20 +50,21 @@
 		},
 		hasMenu: `${site.url}menu/`,
 		// TODO this is hardcoded
-		openingHoursSpecification: [
-			{
-				'@type': 'OpeningHoursSpecification',
-				dayOfWeek: ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'],
-				opens: '11:00',
-				closes: '20:00'
-			},
-			{
-				'@type': 'OpeningHoursSpecification',
-				dayOfWeek: 'Tuesday',
-				opens: '00:00',
-				closes: '00:00'
-			}
-		],
+		// openingHoursSpecification: [
+		// 	{
+		// 		'@type': 'OpeningHoursSpecification',
+		// 		dayOfWeek: ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'],
+		// 		opens: '11:00',
+		// 		closes: '20:00'
+		// 	},
+		// 	{
+		// 		'@type': 'OpeningHoursSpecification',
+		// 		dayOfWeek: 'Tuesday',
+		// 		opens: '00:00',
+		// 		closes: '00:00'
+		// 	}
+		// ],
+		openingHoursSpecification: business.openingHours,
 		// TODO this is hardcoded
 		telephone: `+18565449355`,
 		url: site.url,

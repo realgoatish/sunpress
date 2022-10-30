@@ -1,6 +1,6 @@
 import { mapTimes } from './mapTimes';
 
-export const mapHoursOfOperation = (input) => {
+export const mapOpeningHoursUI = (input) => {
 	// we want to reduce our input array into a (probably smaller) array
 	let aggregated = input.reduce((acc, cv) => {
 		// grab the last element in our range -- we'll use this to compare against
@@ -49,4 +49,42 @@ export const mapHoursOfOperation = (input) => {
 			times: `${mapTimes(obj.opens)} to ${mapTimes(obj.closes)}`
 		};
 	});
+};
+
+export const mapOpeningHoursSEO = (input) => {
+	let openingHoursSpecification = input.reduce((acc, cv) => {
+		// grab the last element in our range -- we'll use this to compare against
+		let prev = acc[acc.length - 1];
+
+		// if there isn't a previous (this is the first), then we just add it
+		if (!prev) {
+			acc.push({
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: cv.day,
+				opens: cv.opens,
+				closes: cv.closes
+			});
+			// if the current day has the same hours as the previous one...
+		} else if (cv.opens === prev.opens && cv.closes === prev.closes) {
+			// if the dayOfWeek is typeof 'string', we need to make an array to add others
+			if (typeof prev.dayOfWeek === 'string') {
+				prev.dayOfWeek = [prev.dayOfWeek, cv.day];
+				// if it's an array, spread syntax to add current day of the week with same hours to it
+			} else if (Array.isArray(prev.dayOfWeek)) {
+				prev.dayOfWeek = [...prev.dayOfWeek, cv.day];
+			}
+		} else {
+			// it's a new range, add it.
+			acc.push({
+				'@type': 'OpeningHoursSpecification',
+				dayOfWeek: cv.day,
+				opens: cv.opens,
+				closes: cv.closes
+			});
+		}
+
+		return acc;
+	}, []);
+
+	return openingHoursSpecification;
 };
