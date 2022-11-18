@@ -3,8 +3,10 @@
 
 	console.log(`$page.data in SEO component: ${JSON.stringify($page.data, null, 2)}`);
 
+	// TODO this would benefit from typing
 	$: business = $page.data.business;
 
+	// TODO this would benefit from typing
 	$: currentPage = $page.data.currentPage;
 
 	let site = {
@@ -49,33 +51,21 @@
 			url: business.logo.image.sourceImage
 		},
 		hasMenu: `${site.url}menu/`,
-		// TODO this is hardcoded
-		// openingHoursSpecification: [
-		// 	{
-		// 		'@type': 'OpeningHoursSpecification',
-		// 		dayOfWeek: ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'],
-		// 		opens: '11:00',
-		// 		closes: '20:00'
-		// 	},
-		// 	{
-		// 		'@type': 'OpeningHoursSpecification',
-		// 		dayOfWeek: 'Tuesday',
-		// 		opens: '00:00',
-		// 		closes: '00:00'
-		// 	}
-		// ],
 		openingHoursSpecification: business.openingHours,
+		telephone: business.telephone,
 		// TODO this is hardcoded
-		telephone: `+18565449355`,
+		// telephone: `+18565449355`,
 		url: site.url,
 		// TODO this is hardcoded
-		sameAs: [
-			'https://instagram.com/sunpressnj',
-			'https://www.facebook.com/sunpressnj',
-			'https://www.yelp.com/biz/sunpress-audubon'
-		],
+		// sameAs: [
+		// 	'https://instagram.com/sunpressnj',
+		// 	'https://www.facebook.com/sunpressnj',
+		// 	'https://www.yelp.com/biz/sunpress-audubon'
+		// ],
+		sameAs: business.sameAs,
 		// TODO this is hardcoded
-		hasMap: 'https://goo.gl/maps/FjYC71EwqP1GLZyz8',
+		// hasMap: 'https://goo.gl/maps/FjYC71EwqP1GLZyz8',
+		hasMap: business.hasMap,
 		address: {
 			'@type': 'PostalAddress',
 			streetAddress: business.address.streetAddress,

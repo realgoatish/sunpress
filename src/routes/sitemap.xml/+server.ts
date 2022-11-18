@@ -22,40 +22,28 @@ export async function GET() {
 
     console.log(`imagesFromPages after removing nulls: ${JSON.stringify(imagesFromPages, null, 2)}`)
 
-    // TODO filter out nulls
-    // process the image URLs for the front end
-    // feed into XML below
-
     const { homePageImages, menuPageImages } = imagesFromPages
 
     return new Response(
     `
     <?xml version="1.0" encoding="UTF-8" ?>
-    <urlset
-      xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xhtml="https://www.w3.org/1999/xhtml"
-      xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0"
-      xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
-      xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
-      xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
-    >
-     <url>
-      <loc>https://www.sunpressnj.com/</loc>
-      <priority>0.85</priority>
-      ${homePageImages.map(img => `
-      <image:image>
-        <image:loc>${img}</image:loc>
-      </image:image>`).join("")}
-     </url>
-     <url>
-      <loc>https://www.sunpressnj.com/menu/</loc>
-      <priority>0.85</priority>
-      ${menuPageImages.map(img => `
-      <image:image>
-        <image:loc>${img}</image:loc>
-      </image:image>`).join("")}
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+      <url>
+        <loc>https://www.sunpressnj.com/</loc>
+        <priority>0.85</priority>
+        ${homePageImages.map(img => `
+        <image:image>
+          <image:loc>${img}</image:loc>
+        </image:image>`).join("")}
       </url>
-
+      <url>
+        <loc>https://www.sunpressnj.com/menu/</loc>
+        <priority>0.85</priority>
+        ${menuPageImages.map(img => `
+        <image:image>
+          <image:loc>${img}</image:loc>
+        </image:image>`).join("")}
+      </url>
     </urlset>`.trim(),
     {
       headers: {
