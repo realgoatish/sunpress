@@ -18,6 +18,7 @@ import timeOfDay from './strings/timeOfDay';
 import morningOrNight from './strings/morningOrNight';
 import menuItemMod from './documents/menuItemMod';
 import menuSectionMods from './documents/menuSectionMods';
+import urlArray from './arrays/urlArray';
 // import createSlugs from './js/createSlugs';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -41,7 +42,8 @@ export default createSchema({
 		timeOfDay,
 		morningOrNight,
 		menuItemMod,
-		menuSectionMods
+		menuSectionMods,
+		urlArray
 		// createSlugs
 	])
 });

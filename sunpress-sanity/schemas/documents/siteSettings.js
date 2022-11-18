@@ -19,6 +19,17 @@ export default {
 			type: 'figure'
 		},
 		{
+			name: 'telephone',
+			type: 'string',
+			title: 'Phone Number',
+			validation: (Rule) =>
+				Rule.required()
+					.regex(/^\+\d{11}$/)
+					.error(
+						`Phone number must start with '+1' and include area code, with no spaces or non-digit characters`
+					)
+		},
+		{
 			name: 'address',
 			type: 'object',
 			title: 'Address',
@@ -45,6 +56,16 @@ export default {
 					title: 'Zip Code'
 				}
 			]
+		},
+		{
+			type: 'url',
+			name: 'hasMap',
+			title: 'Google Maps Link'
+		},
+		{
+			type: 'urlArray',
+			name: 'sameAs',
+			title: 'Add URLs for this business on other platforms (Yelp, Facebook, etc.)'
 		},
 		{
 			name: 'openingHours',

@@ -1,8 +1,3 @@
-import { test } from '$lib/js/sanityImages';
-
-// siteName,
-// siteDescription,
-
 export const layoutQuery = () => `*[_type == "siteSettings"]{
   address,
   openingHours,
@@ -14,6 +9,9 @@ export const layoutQuery = () => `*[_type == "siteSettings"]{
     "name": siteName,
     "description": siteDescription,
     address,
+    telephone,
+    hasMap,
+    sameAs,
     logo,
     openingHours
   },

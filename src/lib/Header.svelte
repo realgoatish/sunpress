@@ -12,6 +12,8 @@
 	$: ({ address, logo, navigationSections, openingHours } = data);
 
 	$: [socialNav] = navigationSections.filter((item) => item.id === 'social-nav');
+	// TODO change this to get the dereferenced phone number from query re: socialNav
+	// TODO also probably want to do .substring(2).replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')
 	$: [phone] = socialNav.items.filter((item) => item.text === 'phone');
 	// $: console.log(`PHONE: ${JSON.stringify(phone, null, 2)}`);
 	$: [sitewideNav] = navigationSections.filter((item) => item.id === 'sitewide-nav');
@@ -52,6 +54,7 @@
 						<Social data={socialNav} />
 					</div>
 					<h2 class="screen-reader-only">Phone Number</h2>
+					<!-- TODO change this to get the dereferenced phone number from Social -->
 					<p>{phone.link.externalUrl}</p>
 					<h2 class="screen-reader-only">Address</h2>
 					<p class="flex column">
