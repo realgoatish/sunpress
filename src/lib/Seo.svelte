@@ -82,7 +82,8 @@
 			latitude: '39.8940622',
 			longitude: '-75.0745219'
 		},
-		servesCuisine: ['Mexican', 'Cuban', 'South American'],
+		servesCuisine: business.servesCuisine,
+		// servesCuisine: ['Mexican', 'Cuban', 'South American'],
 		priceRange: '$',
 		paymentAccepted: 'Cash, Credit Card',
 		currenciesAccepted: 'USD',

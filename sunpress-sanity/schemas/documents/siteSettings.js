@@ -68,6 +68,11 @@ export default {
 			title: 'Add URLs for this business on other platforms (Yelp, Facebook, etc.)'
 		},
 		{
+			type: 'stringArray',
+			name: 'servesCuisine',
+			title: 'Add keywords to describe the types of cuisine your restaurant serves'
+		},
+		{
 			name: 'openingHours',
 			type: 'array',
 			title: 'Hours of Operation',

@@ -12,6 +12,7 @@ export const layoutQuery = () => `*[_type == "siteSettings"]{
     telephone,
     hasMap,
     sameAs,
+    servesCuisine,
     logo,
     openingHours
   },
