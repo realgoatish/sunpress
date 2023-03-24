@@ -45,7 +45,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@portabletext/svelte": "^1.0.1",
+		"@portabletext/svelte": "^2.0.0",
 		"@realgoatish/svelte-every-layout": "^0.0.23",
 		"@sanity/client": "^3.4.1",
 		"slug": "^8.0.0",
