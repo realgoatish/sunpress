@@ -1,7 +1,7 @@
 export default {
 	name: 'siteSettings',
 	type: 'document',
-	__experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+	__experimental_actions: [/* 'create', */ 'update', /* 'delete', */ 'publish'],
 	title: 'Global Site Settings',
 	fields: [
 		{
@@ -66,6 +66,11 @@ export default {
 			type: 'urlArray',
 			name: 'sameAs',
 			title: 'Add URLs for this business on other platforms (Yelp, Facebook, etc.)'
+		},
+		{
+			type: 'stringArray',
+			name: 'servesCuisine',
+			title: 'Add keywords to describe the types of cuisine your restaurant serves'
 		},
 		{
 			name: 'openingHours',

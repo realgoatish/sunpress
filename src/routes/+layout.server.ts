@@ -5,7 +5,7 @@ import { client } from '$lib/js/sanityClient'
 import { processLayoutLogoUrl } from '$lib/js/sanityImages'
 import { mapOpeningHoursSEO } from '$lib/js/mapHoursOfOperation'
 
-// export const prerender = true
+export const trailingSlash = 'always'
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {
@@ -22,7 +22,7 @@ export async function load() {
       logo: processLayoutLogoUrl(data.logo),
     }
 
-    console.log(`response in +layout.server.ts: ${JSON.stringify(processedResponse, null, 2)}`)
+    // console.log(`response in +layout.server.ts: ${JSON.stringify(processedResponse, null, 2)}`)
 
     return processedResponse
   })

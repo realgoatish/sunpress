@@ -3,6 +3,7 @@
 	import Sprite from '$lib/Sprite.svelte';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
+	import { page } from '$app/stores';
 
 	/** @type {import('./$types').PageData} */
 	export let data;

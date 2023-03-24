@@ -1,6 +1,5 @@
 <script>
 	import { Center, Frame, Sidebar } from '@realgoatish/svelte-every-layout';
-	import { Section, H } from 'tusculum';
 	import { mapOpeningHoursUI } from '$lib/js/mapHoursOfOperation';
 	import Social from './Social.svelte';
 	import SiteNav from './SiteNav.svelte';

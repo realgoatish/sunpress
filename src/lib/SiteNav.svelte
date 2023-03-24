@@ -1,6 +1,7 @@
 <script>
-	import { page } from '$app/stores';
 	import { Cluster } from '@realgoatish/svelte-every-layout';
+	import { page } from '$app/stores';
+
 	export let data;
 </script>
 
