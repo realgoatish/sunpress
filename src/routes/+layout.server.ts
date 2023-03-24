@@ -6,7 +6,6 @@ import { processLayoutLogoUrl } from '$lib/js/sanityImages'
 import { mapOpeningHoursSEO } from '$lib/js/mapHoursOfOperation'
 
 export const trailingSlash = 'always'
-export const csr = false
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {
