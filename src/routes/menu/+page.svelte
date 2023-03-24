@@ -8,7 +8,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
+	// $: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
 
 	// $: [starters] = data.body.filter((section) => section.id === 'starters');
 	// $: [tacos] = data.body.filter((section) => section.id === 'tacos');
