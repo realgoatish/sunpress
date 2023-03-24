@@ -2,13 +2,13 @@
 	import { Center } from '@realgoatish/svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
 	import MenuSection from './MenuSection.svelte';
-	import Seo from '$lib/Seo.svelte';
+	import { Somerset, BreadcrumbJsonLd } from 'somerset';
 	import { page } from '$app/stores';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	// $: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
+	$: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
 
 	// $: [starters] = data.body.filter((section) => section.id === 'starters');
 	// $: [tacos] = data.body.filter((section) => section.id === 'tacos');
@@ -17,9 +17,41 @@
 	// $: [quesadillas] = data.body.filter((section) => section.id === 'quesadillas');
 	// $: [soupsAndSides] = data.body.filter((section) => section.id === 'soups-and-sides');
 	// $: [dulcero] = data.body.filter((section) => section.id === 'dulcero');
+
+	$: ({ business, currentPage } = data);
 </script>
 
-<Seo />
+<Somerset
+	title={currentPage.title}
+	canonical={$page.url.href}
+	description={currentPage.description}
+	openGraph={{
+		type: 'website',
+		url: $page.url.href,
+		title: currentPage.title,
+		description: currentPage.description,
+		siteName: business.name,
+		locale: 'en-US',
+		images: [
+			{
+				url: currentPage.figure.image.facebook,
+				width: 1200,
+				height: 630,
+				alt: currentPage.figure.alt
+			}
+		]
+	}}
+/>
+
+<BreadcrumbJsonLd
+	itemListElements={[
+		{
+			position: 1,
+			name: 'Home',
+			item: `${$page.url.origin}/`
+		}
+	]}
+/>
 
 <main id="main">
 	<div>

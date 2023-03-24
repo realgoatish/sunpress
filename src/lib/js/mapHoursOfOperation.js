@@ -2,9 +2,9 @@ import { mapTimes } from './mapTimes';
 
 export const mapOpeningHoursUI = (input) => {
 	// we want to reduce our input array into a (probably smaller) array
-	let aggregated = input.reduce((acc, cv) => {
+	const aggregated = input.reduce((acc, cv) => {
 		// grab the last element in our range -- we'll use this to compare against
-		let prev = acc[acc.length - 1];
+		const prev = acc[acc.length - 1];
 
 		// if there isn't a previous (this is the first), then we just add it
 		if (!prev) {
@@ -30,7 +30,7 @@ export const mapOpeningHoursUI = (input) => {
 
 	// we now have an array that resembles our input, except aggregated days appear as a start (weekday prop) and end (untilWeekday prop). So we need to map these to strings accordingly:
 	return aggregated.map((obj) => {
-		let day = obj.day;
+		let { day } = obj;
 
 		// if this object represents an aggregate of days, we add the untilWeekday prop to the end abbreviated
 		if (obj.untilWeekday) {
@@ -52,9 +52,9 @@ export const mapOpeningHoursUI = (input) => {
 };
 
 export const mapOpeningHoursSEO = (input) => {
-	let openingHoursSpecification = input.reduce((acc, cv) => {
+	const openingHoursSpecification = input.reduce((acc, cv) => {
 		// grab the last element in our range -- we'll use this to compare against
-		let prev = acc[acc.length - 1];
+		const prev = acc[acc.length - 1];
 
 		// if there isn't a previous (this is the first), then we just add it
 		if (!prev) {
