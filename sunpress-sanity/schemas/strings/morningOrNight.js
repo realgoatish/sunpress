@@ -1,5 +1,6 @@
 export default {
 	name: 'morningOrNight',
+	title: 'Morning or Night?',
 	type: 'string',
 	options: {
 		list: [

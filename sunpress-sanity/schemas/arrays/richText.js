@@ -1,5 +1,6 @@
 export default {
 	name: 'richText',
+	title: 'Rich Text Block',
 	type: 'array',
 	of: [
 		{

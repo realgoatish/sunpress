@@ -1,5 +1,6 @@
 export default {
 	name: 'stringArray',
+	title: 'String Array',
 	type: 'array',
 	of: [
 		{

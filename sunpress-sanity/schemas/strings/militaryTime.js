@@ -1,5 +1,6 @@
 export default {
 	name: 'militaryTime',
+	title: 'Military Time',
 	type: 'string',
 	options: {
 		list: [
