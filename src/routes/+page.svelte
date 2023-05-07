@@ -8,30 +8,30 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	// $: console.log(`homePage data on the front end: ${JSON.stringify(data, null, 2)}`);
+	$: console.log(`homePage data on the front end: ${JSON.stringify(data, null, 2)}`);
 
-	$: ({ business, currentPage } = data);
+	$: ({ localBusiness, webPageSeo } = data);
+
+	$: ({ openGraph } = webPageSeo);
 </script>
 
-<!-- <Seo /> -->
-
 <Somerset
-	title={currentPage.title}
-	canonical={$page.url.href}
-	description={currentPage.description}
+	title={webPageSeo.title}
+	description={webPageSeo.description}
+	canonical={$page.url}
 	openGraph={{
 		type: 'website',
-		url: $page.url.href,
-		title: currentPage.title,
-		description: currentPage.description,
-		siteName: business.name,
+		url: $page.url,
+		title: openGraph.title,
+		description: openGraph.description,
 		locale: 'en-US',
+		siteName: localBusiness.name,
 		images: [
 			{
-				url: currentPage.figure.image.facebook,
+				url: openGraph.ogImage.image.facebook,
 				width: 1200,
 				height: 630,
-				alt: currentPage.figure.alt
+				alt: openGraph.ogImage.alt
 			}
 		]
 	}}

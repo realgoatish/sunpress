@@ -8,7 +8,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	// $: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
+	$: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
 
 	// $: [starters] = data.body.filter((section) => section.id === 'starters');
 	// $: [tacos] = data.body.filter((section) => section.id === 'tacos');
@@ -18,26 +18,28 @@
 	// $: [soupsAndSides] = data.body.filter((section) => section.id === 'soups-and-sides');
 	// $: [dulcero] = data.body.filter((section) => section.id === 'dulcero');
 
-	$: ({ business, currentPage } = data);
+	$: ({ localBusiness, webPageSeo } = data);
+
+	$: ({ openGraph } = webPageSeo);
 </script>
 
 <Somerset
-	title={currentPage.title}
-	canonical={$page.url.href}
-	description={currentPage.description}
+	title={webPageSeo.title}
+	canonical={$page.url}
+	description={webPageSeo.description}
 	openGraph={{
 		type: 'website',
-		url: $page.url.href,
-		title: currentPage.title,
-		description: currentPage.description,
-		siteName: business.name,
+		url: $page.url,
+		title: openGraph.title,
+		description: openGraph.description,
+		siteName: localBusiness.name,
 		locale: 'en-US',
 		images: [
 			{
-				url: currentPage.figure.image.facebook,
+				url: openGraph.ogImage.image.facebook,
 				width: 1200,
 				height: 630,
-				alt: currentPage.figure.alt
+				alt: openGraph.ogImage.alt
 			}
 		]
 	}}

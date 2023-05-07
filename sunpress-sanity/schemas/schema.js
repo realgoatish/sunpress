@@ -15,6 +15,12 @@ import menuSectionMods from './documents/menuSectionMods';
 import urlArray from './arrays/urlArray';
 import stringArray from './arrays/stringArray';
 // import createSlugs from './js/createSlugs';
+import seoLocalBusiness from './objects/seoLocalBusiness';
+import address from './objects/address';
+import seoPage from './objects/seoPage';
+import seoOpenGraph from './objects/seoOpenGraph';
+// import day from './objects/day';
+// import dayHours from './objects/dayHours';
 
 export const schemaTypes = [
 	siteSettings,
@@ -32,5 +38,11 @@ export const schemaTypes = [
 	menuItemMod,
 	menuSectionMods,
 	urlArray,
-	stringArray
+	stringArray,
+	seoLocalBusiness,
+	address,
+	seoOpenGraph,
+	seoPage
+	// day,
+	// dayHours
 ];

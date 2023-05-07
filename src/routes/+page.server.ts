@@ -1,7 +1,8 @@
 import { error } from '@sveltejs/kit';
-import { homePageQuery } from '$lib/js/sanityQueries'
+import { homePageQuery } from '$lib/js/sanityQueries.server'
 import { client } from '$lib/js/sanityClient'
 import { processBlockImageUrls, processPageSeoImageUrls } from '$lib/js/sanityImages'
+import { processPage } from '$lib/js/processEndpoints.server'
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
@@ -9,25 +10,27 @@ export async function load() {
 
   const response = await client.fetch(homePageQuery()).then(data => {
 
-    // console.log(`response from Sanity on Home Page: ${JSON.stringify(data, null, 2)}`)
+    const processedResponse = processPage(data)
 
-    const imageObjects = data?.body?.filter((item) => item?._type === 'figure' && item?.image);
+    return processedResponse
+
+    // const imageObjects = data?.body?.filter((item) => item?._type === 'figure' && item?.image);
   
-    if (!imageObjects.length) {
-      return data;
-    }
+    // if (!imageObjects.length) {
+    //   return data;
+    // }
 
-    const processedBlockImages = processBlockImageUrls(imageObjects)
+    // const processedBlockImages = processBlockImageUrls(imageObjects)
 
-    // replace the image objects with matching _key properties on the cloned response
-    // body with the new ones you just created
-    const newBody = data.body.map((obj) => processedBlockImages.find((o) => o._key === obj._key) || obj);
+    // // replace the image objects with matching _key properties on the cloned response
+    // // body with the new ones you just created
+    // const newBody = data.body.map((obj) => processedBlockImages.find((o) => o._key === obj._key) || obj);
 
-    data.body = newBody
+    // data.body = newBody
 
-    data.currentPage.figure = processPageSeoImageUrls(data.currentPage.figure)
+    // data.currentPage.figure = processPageSeoImageUrls(data.currentPage.figure)
 
-    return data
+    // return data
 
   })
 

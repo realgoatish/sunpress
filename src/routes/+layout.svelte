@@ -4,11 +4,14 @@
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import { page } from '$app/stores';
+	import { LocalBusinessJsonLd } from 'somerset';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
 	// $: console.log(`layout data on front end: ${JSON.stringify(data, null, 2)}`);
+
+	$: ({ localBusiness } = data);
 
 	// TODO currently un-used attributes from data = title, description
 	$: headerData = {
@@ -18,6 +21,30 @@
 		openingHours: data.openingHours
 	};
 </script>
+
+<LocalBusinessJsonLd
+	type="Restaurant"
+	id={`${localBusiness.url}/#restaurant`}
+	name={localBusiness.name}
+	description={localBusiness.description}
+	url={`${localBusiness.url}/`}
+	telephone={localBusiness.telephone}
+	address={{
+		streetAddress: localBusiness.address.streetAddress,
+		addressLocality: localBusiness.address.addressLocality,
+		addressRegion: localBusiness.address.addressRegion,
+		postalCode: localBusiness.address.postalCode,
+		addressCountry: localBusiness.address.addressCountry
+	}}
+	geo={{
+		latitude: localBusiness.geo.lat,
+		longitude: localBusiness.geo.long
+	}}
+	sameAs={localBusiness.sameAs}
+	openingHours={localBusiness.openingHours}
+	priceRange="$$"
+	menu={`${localBusiness.url}/menu/`}
+/>
 
 <Sprite />
 
