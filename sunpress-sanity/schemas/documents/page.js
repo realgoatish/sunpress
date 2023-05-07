@@ -42,6 +42,13 @@ export default {
 				})
 		},
 		{
+			name: 'webPageSeo',
+			title: 'Page SEO Data',
+			description:
+				'Data about this page for search results and thumbnail presentation when you share links to the page on e.g. social media. This data does not effect anything visible on the page',
+			type: 'seoPage'
+		},
+		{
 			name: 'title',
 			type: 'string',
 			title: 'Title'
@@ -51,11 +58,11 @@ export default {
 			type: 'string',
 			title: 'Short Page Description'
 		},
-		{
-			type: 'figure',
-			name: 'figure',
-			title: 'Image'
-		},
+		// {
+		// 	type: 'figure',
+		// 	name: 'figure',
+		// 	title: 'Image'
+		// },
 		// need to edit createSlugs.js so the properties it looks for are ones you have on your Pages
 		// before you can uncomment this
 		slugWithType(),

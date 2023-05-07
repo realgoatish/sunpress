@@ -59,7 +59,7 @@ export const mapOpeningHoursSEO = (input) => {
 		// if there isn't a previous (this is the first), then we just add it
 		if (!prev) {
 			acc.push({
-				'@type': 'OpeningHoursSpecification',
+				// '@type': 'OpeningHoursSpecification',
 				dayOfWeek: cv.day,
 				opens: cv.opens,
 				closes: cv.closes
@@ -76,7 +76,7 @@ export const mapOpeningHoursSEO = (input) => {
 		} else {
 			// it's a new range, add it.
 			acc.push({
-				'@type': 'OpeningHoursSpecification',
+				// '@type': 'OpeningHoursSpecification',
 				dayOfWeek: cv.day,
 				opens: cv.opens,
 				closes: cv.closes
