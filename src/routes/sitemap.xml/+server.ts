@@ -1,12 +1,15 @@
 import { error } from '@sveltejs/kit';
-import { sitemapQuery } from '$lib/js/sanityQueries.server'
-import { client } from '$lib/js/sanityClient'
+import { sitemapQuery } from '$lib/js/sanityQueries'
+// import { client } from '$lib/js/sanityClient'
+import { getSanityServerClient } from '$lib/js/sanityClient.server';
 import { sitemapImageUrls } from '$lib/js/sanityImages'
 
 /** @type {import('./$types').PageServerLoad} */
 export async function GET() {
 
-    const imagesFromPages = await client.fetch(sitemapQuery()).then(({ rawHomePageImages, rawMenuPageImages }) => {
+    // const imagesFromPages = await client.fetch(sitemapQuery()).then(({ rawHomePageImages, rawMenuPageImages }) => {
+    const imagesFromPages = await getSanityServerClient(false).fetch(sitemapQuery()).then(({ rawHomePageImages, rawMenuPageImages }) => {
+  
 
       const homeNoNulls = rawHomePageImages.filter(data => data !== null)
       const menuNoNulls = rawMenuPageImages.filter(data => data !== null)
