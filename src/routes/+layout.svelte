@@ -1,17 +1,32 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import Sprite from '$lib/Sprite.svelte';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import { page } from '$app/stores';
 	import { LocalBusinessJsonLd } from 'somerset';
+	import { previewSubscription } from '$lib/js';
+	import { layoutQuery } from '$lib/js/sanityQueries';
+	import type { PageData } from './$types';
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	// /** @type {import('./$types').PageData} */
+	// export let data;
 
-	// $: console.log(`layout data on front end: ${JSON.stringify(data, null, 2)}`);
+	export let data: PageData;
+
+	console.log(`layout data on front end: ${JSON.stringify(data, null, 2)}`);
+
+	// $: ({
+	// 	initialData: { response }
+	// } = data);
+	// $: ({ data: layoutData } = previewSubscription(layoutQuery(), {
+	// 	params: null,
+	// 	initialData,
+	// 	enabled: false
+	// }));
 
 	$: ({ localBusiness } = data);
+	// $: ({ localBusiness } = response);
 
 	// TODO currently un-used attributes from data = title, description
 	$: headerData = {

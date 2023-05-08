@@ -1,4 +1,8 @@
-import { SANITY_PROJECT_ID, SANITY_DATASET, SANITY_BASE_IMAGE_URL } from '$env/static/private';
+import {
+	PUBLIC_SANITY_PROJECT_ID,
+	PUBLIC_SANITY_DATASET,
+	PUBLIC_SANITY_BASE_IMAGE_URL
+} from '$env/static/public';
 
 // turn sanity image ref into the actual name of the image stored in sanity
 const processImageRef = (imageRef) => {

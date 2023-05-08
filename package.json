@@ -23,6 +23,8 @@
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-vercel": "^1.0.0-next.75",
 		"@sveltejs/kit": "1.0.0",
+		"@types/react": "^18.2.6",
+		"@types/react-dom": "^18.2.4",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"eslint": "^8.16.0",
@@ -48,6 +50,9 @@
 		"@portabletext/svelte": "^2.0.0",
 		"@realgoatish/svelte-every-layout": "^0.0.23",
 		"@sanity/client": "^3.4.1",
+		"@sanity/groq-store": "^2.1.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
 		"slug": "^8.0.0",
 		"somerset": "^0.0.3",
 		"tusculum": "^0.0.17"

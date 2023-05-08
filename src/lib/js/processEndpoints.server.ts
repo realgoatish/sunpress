@@ -9,8 +9,8 @@ export const processLayout = (data) => {
   const processedResponse = {
     ...data,
     localBusiness: {
-      ...data.localBusiness,
-      openingHours: mapOpeningHoursSEO(data.localBusiness.openingHours)
+      ...data?.localBusiness,
+      openingHours: mapOpeningHoursSEO(data?.localBusiness?.openingHours)
     }
   }
   
