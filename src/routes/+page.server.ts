@@ -9,6 +9,8 @@ import { getSanityServerClient } from '$lib/js/sanityClient.server';
 export const load: PageServerLoad = async ({ params, locals: { previewMode } }) => {
   const response = await getSanityServerClient(previewMode).fetch(homePageQuery()).then(data => {
 
+    console.log(`sanity homePage response ON THE SERVER: ${JSON.stringify(data, null, 2)}`)
+
     const processedResponse = processPage(data)
 
     return processedResponse
