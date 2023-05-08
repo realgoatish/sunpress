@@ -1,5 +1,4 @@
 import { Card, Text } from '@sanity/ui';
-// import { env } from '$env/dynamic/public'
 import React from 'react';
 
 export function PagePreview(props: unknown) {

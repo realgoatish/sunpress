@@ -1,6 +1,7 @@
 import sanityClient from '@sanity/client';
 import type { ClientConfig, SanityClient } from '@sanity/client';
-import { env } from '$env/dynamic/public';
+// import { env } from '$env/dynamic/private';
+import { SANITY_WEBSITE_TOKEN } from '$env/static/private' 
 import { clientConfig } from './config'; 
 // import {
 // 	SANITY_WEBSITE_TOKEN,
@@ -17,11 +18,12 @@ const createClient = (config: ClientConfig): SanityClient => {
 
 export const previewClient = createClient({
 	...clientConfig,
-	useCdn: false,
-	token: env.PUBLIC_SANITY_WEBSITE_TOKEN || ''
+	// useCdn: false,
+	token: SANITY_WEBSITE_TOKEN || ''
 });
 
-export const client = createClient(clientConfig);
+  
+export const client = createClient({ ...clientConfig, useCdn: typeof document !== 'undefined' && isProd, token: SANITY_WEBSITE_TOKEN });
 export const getSanityServerClient = (usePreview: boolean) => (usePreview ? previewClient : client);
 
 // export const client = sanityClient({
