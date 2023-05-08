@@ -102,7 +102,8 @@ function querySubscription<R = any>(options: {
 				subscription = store.subscribe(query, get(params), (err, result) => {
 					if (err) {
 						error.set(err);
-					} else {
+          } else {
+            console.log(`SHOULD INCLUDE DRAFTS!!!: ${JSON.stringify(result, null, 2)}`)
 						data.set(result);
 					}
 				});
