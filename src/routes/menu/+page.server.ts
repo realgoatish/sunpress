@@ -4,7 +4,7 @@ import { menuPageQuery } from '$lib/js/sanityQueries'
 // import { processMenuImageUrls, processPageSeoImageUrls } from '$lib/js/sanityImages'
 import { processMenuPage } from '$lib/js/processEndpoints.server'
 import type { PageServerLoad } from './$types';
-import { getSanityServerClient } from '$lib/config/sanity/client';
+import { getSanityServerClient } from '$lib/js/sanityClient.server';
 
 export const load: PageServerLoad = async ({ params, locals: { previewMode } }) => {
   const response = await getSanityServerClient(previewMode).fetch(menuPageQuery()).then(data => {
