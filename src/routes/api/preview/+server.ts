@@ -38,7 +38,7 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
 
 		// Set the redirect slug and append the isPreview query
 		// param, so that the app knows it's a Sanity preview.
-		redirectSlug = `${menuPage.slug}?isPreview=true`;
+		redirectSlug = `${menuPage.slug.current}?isPreview=true`;
   }
   
   // TODO - HOME PAGE DOES NOT HAVE A SLUG, THIS MEANS THE PREVIEW CAN'T WORK AS WRITTEN HERE. FIGURE OUT HOW/WHERE TO SEND DIFFERENT PARAMS
@@ -53,7 +53,7 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
 
 		// Set the redirect slug and append the isPreview query
 		// param, so that the app knows it's a Sanity preview.
-		redirectSlug = `${homePage.slug}?isPreview=true`;
+		redirectSlug = `${homePage.slug.current}?isPreview=true`;
   }
 
   console.log(`cookies before setPreviewCookie: ${JSON.stringify(cookies, null, 2)}`)
