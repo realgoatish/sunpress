@@ -25,7 +25,6 @@
 
 	// $: ({ localBusiness, webPageSeo } = data); ///////////// ORIGINAL DESTRUCTURING BEFORE ALL PREVIEW HACKING
 	$: ({ response } = initialData);
-	// $: ({ localBusiness, webPageSeo } = response);
 	$: ({ localBusiness } = data);
 	$: ({ webPageSeo } = response);
 
@@ -43,45 +42,43 @@
 </script>
 
 {#if $homePageData?.response}
-	<h1>YERRRRRRT</h1>
+	<Somerset
+		title={webPageSeo.title}
+		description={webPageSeo.description}
+		canonical={$page.url}
+		openGraph={{
+			type: 'website',
+			url: $page.url,
+			title: openGraph.title,
+			description: openGraph.description,
+			locale: 'en-US',
+			siteName: localBusiness.name,
+			images: [
+				{
+					url: openGraph.ogImage.image.facebook,
+					width: 1200,
+					height: 630,
+					alt: openGraph.ogImage.alt
+				}
+			]
+		}}
+	/>
+
+	<main id="main">
+		<div>
+			<Center max="var(--measure)" gutters="var(--s-1)">
+				<Stack>
+					<h1>Welcome to SunPress</h1>
+					<PortableText
+						value={$homePageData.response.body}
+						components={{
+							types: {
+								figure: Figure
+							}
+						}}
+					/>
+				</Stack>
+			</Center>
+		</div>
+	</main>
 {/if}
-
-<Somerset
-	title={webPageSeo.title}
-	description={webPageSeo.description}
-	canonical={$page.url}
-	openGraph={{
-		type: 'website',
-		url: $page.url,
-		title: openGraph.title,
-		description: openGraph.description,
-		locale: 'en-US',
-		siteName: localBusiness.name,
-		images: [
-			{
-				url: openGraph.ogImage.image.facebook,
-				width: 1200,
-				height: 630,
-				alt: openGraph.ogImage.alt
-			}
-		]
-	}}
-/>
-
-<main id="main">
-	<div>
-		<Center max="var(--measure)" gutters="var(--s-1)">
-			<Stack>
-				<h1>Welcome to SunPress</h1>
-				<PortableText
-					value={response.body}
-					components={{
-						types: {
-							figure: Figure
-						}
-					}}
-				/>
-			</Stack>
-		</Center>
-	</div>
-</main>
