@@ -64,7 +64,7 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
 		setPreviewCookie(cookies);
   }
   
-  console.log(`cookies AFTER setPreviewCookie: ${JSON.stringify(cookies, null, 2)}`)
+  console.log(`cookies AFTER setPreviewCookie: ${JSON.stringify(cookies.get('__preview_mode'), null, 2)}`)
 
 
 	// Since this endpoint is called from the Sanity Studio on

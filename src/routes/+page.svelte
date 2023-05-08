@@ -30,15 +30,7 @@
 
 	$: ({ openGraph } = webPageSeo); ////////////// ORIGINAL DESTRUCTURING BEFORE ALL PREVIEW HACKING
 
-	$: homePageData
-		? console.log(
-				`homePageData obj that we fed to previewSubscription, what's on this???: ${JSON.stringify(
-					get(homePageData),
-					null,
-					2
-				)}`
-		  )
-		: console.log(`homePageData has no value`);
+	$: $homePageData && console.log(`store updated: ${JSON.stringify(get(homePageData), null, 2)}`);
 </script>
 
 {#if $homePageData?.response}

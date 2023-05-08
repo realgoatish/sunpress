@@ -33,7 +33,8 @@ export function createPreviewSubscriptionStore({
 		});
 	};
 
-	function getStore(abort: Aborter) {
+  function getStore(abort: Aborter) {
+    console.log(`getStore has been called in previewSubscriptionStore.ts!!!`)
 		if (!store) {
 			store = import('@sanity/groq-store').then(({ groqStore }) => {
 				// Skip creating the groq store if we've been unmounted to save memory and reduce gc pressure
