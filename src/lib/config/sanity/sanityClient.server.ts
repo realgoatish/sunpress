@@ -18,13 +18,31 @@ const createClient = (config: ClientConfig): SanityClient => {
 
 export const previewClient = createClient({
 	...clientConfig,
-	// useCdn: false,
+	useCdn: false,
 	token: SANITY_WEBSITE_TOKEN || ''
 });
 
-  
+// TODO - MOVE THIS TO AN ENV FILE OR SOMETHING
+const isProd = import.meta.env.PROD
+
 export const client = createClient({ ...clientConfig, useCdn: typeof document !== 'undefined' && isProd, token: SANITY_WEBSITE_TOKEN });
 export const getSanityServerClient = (usePreview: boolean) => (usePreview ? previewClient : client);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function overlayDrafts(docs: any[]): any[] {
+	const documents = docs || [];
+	const overlayed = documents.reduce((map, doc) => {
+		if (!doc._id) {
+			throw new Error('Ensure that `_id` is included in query projection');
+		}
+
+		const isDraft = doc._id.startsWith('drafts.');
+		const id = isDraft ? doc._id.slice(7) : doc._id;
+		return isDraft || !map.has(id) ? map.set(id, doc) : map;
+	}, new Map());
+
+	return Array.from(overlayed.values());
+}
 
 // export const client = sanityClient({
 // 	projectId: SANITY_PROJECT_ID,
