@@ -134,7 +134,7 @@ export const postQuery = groq`
 }`;
 
 export const postBySlugQuery = groq`
-*[_type == "page" && slug.current == $slug][0] {
+*[_type == "page" && home == true && slug.current == $slug][0] {
   ${homeFields}
 }
 `;

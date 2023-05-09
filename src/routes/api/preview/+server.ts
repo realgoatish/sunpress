@@ -43,6 +43,7 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
   
   // TODO - HOME PAGE DOES NOT HAVE A SLUG, THIS MEANS THE PREVIEW CAN'T WORK AS WRITTEN HERE. FIGURE OUT HOW/WHERE TO SEND DIFFERENT PARAMS
   if (type === 'page' && slug === "/") {
+  // if (type === 'page') {
     const homePage = await getSanityServerClient(true).fetch(postBySlugQuery, {
       slug
     });
