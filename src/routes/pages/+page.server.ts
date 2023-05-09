@@ -4,16 +4,16 @@ import { processPage } from '$lib/js/processEndpoints.server'
 import type { PageServerLoad } from './$types';
 import { getSanityServerClient, overlayDrafts } from '$lib/config/sanity/sanityClient.server';
 
-export const load: PageServerLoad = async ({ parent, params }) => {
+export const load: PageServerLoad = async ({ parent }) => {
 
   const { previewMode } = await parent()
 
   console.log(`previewMode on homePage ON SERVER: ${previewMode}`)
 
   // handle homePage preview
-  if (params.slug === '/') {
+  // if (params.slug === '/') {
     const { post, morePosts } = await getSanityServerClient(previewMode).fetch(postQuery, {
-      slug: params.slug || '/'
+      slug: '/'
     })
       
     if (!post) {
@@ -32,12 +32,5 @@ export const load: PageServerLoad = async ({ parent, params }) => {
         morePosts: overlayDrafts(morePosts)
       }
     }
-  }
-
-  // if (params.slug === '/menu/') {
-
-  // }
-
-  throw error(404, "if condition not caught in preview's +page.server.ts");
 
 }
