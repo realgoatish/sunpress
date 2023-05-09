@@ -1,11 +1,11 @@
 
 import { error } from '@sveltejs/kit';
-import { layoutQuery } from '$lib/js/sanityQueries';
+import { layoutQuery } from '$lib/config/sanity/sanityQueries';
 // import { client } from '$lib/js/sanityClient'
 import { processLayout } from '$lib/js/processEndpoints.server'
 // import { processPage } from '$lib/js/processEndpoints.server'
 import type { PageServerLoad } from './$types';
-import { getSanityServerClient } from '$lib/js/sanityClient.server';
+import { getSanityServerClient } from '$lib/config/sanity/sanityClient.server';
 
 export const trailingSlash = 'always'
 

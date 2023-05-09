@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
-import { sitemapQuery } from '$lib/js/sanityQueries'
+import { sitemapQuery } from '$lib/config/sanity/sanityQueries'
 // import { client } from '$lib/js/sanityClient'
-import { getSanityServerClient } from '$lib/js/sanityClient.server';
+import { getSanityServerClient } from '$lib/config/sanity/sanityClient.server';
 import { sitemapImageUrls } from '$lib/js/sanityImages'
 
 /** @type {import('./$types').PageServerLoad} */

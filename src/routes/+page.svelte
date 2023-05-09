@@ -4,73 +4,63 @@
 	import Figure from '$lib/Figure.svelte';
 	import { Somerset } from 'somerset';
 	import { page } from '$app/stores';
-	import { previewSubscription } from '$lib/js';
-	import { homePageQuery } from '$lib/js/sanityQueries';
 	import type { PageData } from './$types';
-	import { get } from 'svelte/store';
 
-	// /** @type {import('./$types').PageData} */
-	// export let data;
+	export let data: PageData;
 
-	export let data: PageData; /////////////// YOU CAN KEEP THIS IF YOU DELETE PREVIEW HACKING CODE
+	$: console.log(`data on front end before destructuring: ${JSON.stringify(data, null, 2)}`);
 
-	// $: console.log(`homePage data on front end: ${JSON.stringify(data, null, 2)}`);
+	// $: ({ initialData, previewMode, slug } = data);
+	// $: ({ data: homePageData } = previewSubscription(postQuery, {
+	// 	params: { slug },
+	// 	initialData,
+	// 	enabled: previewMode && !!slug
+	// }));
 
-	$: ({ initialData, previewMode, slug } = data);
-	$: ({ data: homePageData } = previewSubscription(homePageQuery(), {
-		params: { slug: slug.current },
-		initialData,
-		enabled: previewMode && !!slug
-	}));
-
-	// $: ({ localBusiness, webPageSeo } = data); ///////////// ORIGINAL DESTRUCTURING BEFORE ALL PREVIEW HACKING
-	$: ({ response } = initialData);
-	$: ({ localBusiness } = data);
-	$: ({ webPageSeo } = response);
+	$: ({ localBusiness, webPageSeo } = data); ///////////// ORIGINAL DESTRUCTURING BEFORE ALL PREVIEW HACKING
+	// $: ({ response } = initialData);
+	// $: ({ localBusiness } = data);
+	// $: ({ webPageSeo } = response);
 
 	$: ({ openGraph } = webPageSeo); ////////////// ORIGINAL DESTRUCTURING BEFORE ALL PREVIEW HACKING
-
-	$: $homePageData && console.log(`store updated: ${JSON.stringify(get(homePageData), null, 2)}`);
 </script>
 
-{#if $homePageData?.response}
-	<Somerset
-		title={webPageSeo.title}
-		description={webPageSeo.description}
-		canonical={$page.url}
-		openGraph={{
-			type: 'website',
-			url: $page.url,
-			title: openGraph.title,
-			description: openGraph.description,
-			locale: 'en-US',
-			siteName: localBusiness.name,
-			images: [
-				{
-					url: openGraph.ogImage.image.facebook,
-					width: 1200,
-					height: 630,
-					alt: openGraph.ogImage.alt
-				}
-			]
-		}}
-	/>
+<Somerset
+	title={webPageSeo.title}
+	description={webPageSeo.description}
+	canonical={$page.url}
+	openGraph={{
+		type: 'website',
+		url: $page.url,
+		title: openGraph.title,
+		description: openGraph.description,
+		locale: 'en-US',
+		siteName: localBusiness.name,
+		images: [
+			{
+				url: openGraph.ogImage.image.facebook,
+				width: 1200,
+				height: 630,
+				alt: openGraph.ogImage.alt
+			}
+		]
+	}}
+/>
 
-	<main id="main">
-		<div>
-			<Center max="var(--measure)" gutters="var(--s-1)">
-				<Stack>
-					<h1>Welcome to SunPress</h1>
-					<PortableText
-						value={$homePageData.response.body}
-						components={{
-							types: {
-								figure: Figure
-							}
-						}}
-					/>
-				</Stack>
-			</Center>
-		</div>
-	</main>
-{/if}
+<main id="main">
+	<div>
+		<Center max="var(--measure)" gutters="var(--s-1)">
+			<Stack>
+				<h1>Welcome to SunPress</h1>
+				<PortableText
+					value={data.body}
+					components={{
+						types: {
+							figure: Figure
+						}
+					}}
+				/>
+			</Stack>
+		</Center>
+	</div>
+</main>

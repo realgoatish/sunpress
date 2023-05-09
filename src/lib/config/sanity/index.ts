@@ -1,5 +1,5 @@
-import { createPreviewSubscriptionStore } from './previewSubscriptionStore';
-import { createCurrentUserStore } from './currentUser';
+import { createPreviewSubscriptionStore } from './sveltekit/previewSubscriptionStore';
+import { createCurrentUserStore } from './sveltekit/currentUser';
 import { clientConfig } from './config';
 
 export const previewSubscription = createPreviewSubscriptionStore(clientConfig);

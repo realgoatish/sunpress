@@ -5,25 +5,9 @@
 	import Footer from '$lib/Footer.svelte';
 	import { page } from '$app/stores';
 	import { LocalBusinessJsonLd } from 'somerset';
-	import { previewSubscription } from '$lib/js';
-	import { layoutQuery } from '$lib/js/sanityQueries';
 	import type { PageData } from './$types';
 
-	// /** @type {import('./$types').PageData} */
-	// export let data;
-
 	export let data: PageData;
-
-	// console.log(`layout data on front end: ${JSON.stringify(data, null, 2)}`);
-
-	// $: ({
-	// 	initialData: { response }
-	// } = data);
-	// $: ({ data: layoutData } = previewSubscription(layoutQuery(), {
-	// 	params: null,
-	// 	initialData,
-	// 	enabled: false
-	// }));
 
 	$: ({ localBusiness } = data);
 	// $: ({ localBusiness } = response);

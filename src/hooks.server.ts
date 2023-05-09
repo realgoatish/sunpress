@@ -25,7 +25,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if (previewModeCookie === 'true') {
 		event.locals.previewMode = true;
-	}
+  }
+  
+  console.log(`event.locals in hooks: ${JSON.stringify(event.locals, null, 2)}`)
 
 	const response = await resolve(event);
 

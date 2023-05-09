@@ -1,8 +1,8 @@
 import type { RequestHandler } from '../$types';
 import { env } from '$env/dynamic/private';
 import { setPreviewCookie } from '$lib/js/previewCookie';
-import { getSanityServerClient } from '$lib/js/sanityClient.server';
-import { menuPageQuery, homePageQuery } from '$lib/js/sanityQueries';
+import { getSanityServerClient } from '$lib/config/sanity/sanityClient.server';
+import { menuPageQuery, homePageQuery, postBySlugQuery } from '$lib/config/sanity/sanityQueries';
 import { error, redirect } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
@@ -28,7 +28,7 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
 
 	// Our query may vary depending on the type.
 	if (type === 'page' && slug === "/menu/") {
-		const menuPage = await getSanityServerClient(true).fetch(menuPageQuery());
+		const menuPage = await getSanityServerClient(true).fetch(menuPageQuery);
 
 		if (!menuPage || !menuPage.slug) {
 			throw error(401, 'No menu page found');
@@ -38,12 +38,14 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
 
 		// Set the redirect slug and append the isPreview query
 		// param, so that the app knows it's a Sanity preview.
-		redirectSlug = `${menuPage.slug.current}?isPreview=true`;
+		redirectSlug = `/pages${menuPage.slug.current}?isPreview=true`;
   }
   
   // TODO - HOME PAGE DOES NOT HAVE A SLUG, THIS MEANS THE PREVIEW CAN'T WORK AS WRITTEN HERE. FIGURE OUT HOW/WHERE TO SEND DIFFERENT PARAMS
   if (type === 'page' && slug === "/") {
-    const homePage = await getSanityServerClient(true).fetch(homePageQuery());
+    const homePage = await getSanityServerClient(true).fetch(postBySlugQuery, {
+      slug
+    });
 
 		if (!homePage || !homePage.slug) {
 			throw error(401, 'No home page found');
@@ -53,7 +55,7 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
 
 		// Set the redirect slug and append the isPreview query
 		// param, so that the app knows it's a Sanity preview.
-		redirectSlug = `${homePage.slug.current}?isPreview=true`;
+		redirectSlug = `/pages${homePage.slug}?isPreview=true`;
   }
 
   console.log(`cookies before setPreviewCookie: ${JSON.stringify(cookies, null, 2)}`)
