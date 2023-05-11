@@ -11,18 +11,18 @@ export const load: PageServerLoad = async ({ parent, params }) => {
   console.log(`previewMode on homePage ON SERVER: ${previewMode}`)
 
   // handle homePage preview
-  if (params.slug === '/') {
+  if (params.slug === '/menu/') {
     const { post, morePosts } = await getSanityServerClient(previewMode).fetch(postQuery, {
-      slug: params.slug || '/'
+      slug: params.slug
     })
       
     if (!post) {
-      throw error(404, 'Home Page not found BEAR BEAR');
+      throw error(404, 'Menu Page not found PENGUIN PENGUINE');
     }
 
-    console.log(`sanity homePage response "post" ON THE SERVER: ${JSON.stringify(post, null, 2)}`)
-    console.log(`sanity homePage response "morePosts" ON THE SERVER: ${JSON.stringify(morePosts, null, 2)}`)
-    console.log(`sanity homePage response overlayDrafts(morePosts) ON THE SERVER: ${JSON.stringify(overlayDrafts(morePosts)), null, 2}`)
+    console.log(`sanity menuPage response "post" ON THE SERVER: ${JSON.stringify(post, null, 2)}`)
+    console.log(`sanity menuPage response "morePosts" ON THE SERVER: ${JSON.stringify(morePosts, null, 2)}`)
+    console.log(`sanity menuPage response overlayDrafts(morePosts) ON THE SERVER: ${JSON.stringify(overlayDrafts(morePosts)), null, 2}`)
 
     return {
       previewMode,

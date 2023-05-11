@@ -11,6 +11,7 @@ export function slugWithType() {
 	return {
 		name: `slug`,
 		type: `slug`,
+		// TODO this checks the page 'home' boolean, which also seems hacky
 		hidden: ({ document }) => document?.home,
 		options: {
 			source: (doc) => `${doc.title}/`,
@@ -22,6 +23,7 @@ export function slugWithType() {
 					return true;
 				}
 
+				// TODO this is also checking the document's title. need to refactor to something more stable or else make title unchangeable?
 				if (current && context.document.title !== 'Home') {
 					if (!current.startsWith('/')) {
 						return `Slug must begin with "/". Click "Generate" to reset.`;

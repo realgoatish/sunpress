@@ -82,42 +82,44 @@ const homeFields = groq`
   }
 `
 
+  // ...,
+  // webPageSeo{
+  //   ...,
+  //   openGraph{
+  //     ...,
+  //     ogImage{
+  //       ...,
+  //       ...(image.asset-> {
+  //         "image": {
+  //           "twitter": url + "?w=800&h=418&auto=format",
+  //           "facebook": url + "?w=1200&h=630&auto=format",
+  //           "fullSize": url + "?auto=format",
+  //           "sourceImage": url
+  //         }
+  //       })
+  //     }
+  //   }
+  // },
+  // body[]{
+  //   ...,
+  //   _type == "figure" => {
+  //     ...,
+  //     ...(image.asset-> {
+  //       "image": {
+  //         "mobile": url + "?w=800&auto=format",
+  //         "tablet": url + "?w=1600&auto=format",
+  //         "desktop": url + "?w=2400&auto=format",
+  //         "fullSize": url + "?auto=format",
+  //         "sourceImage": url
+  //       }
+  //     })
+  //   },
+  // }
+
 // TODO you'll have to query this by some field that's not editable long-term
 // export const homePageQuery = () => `*[_type == "page" && title == "Home"]{
 export const homePageQuery = groq`*[_type == "page" && title == "Home"]{
-  ...,
-  webPageSeo{
-    ...,
-    openGraph{
-      ...,
-      ogImage{
-        ...,
-        ...(image.asset-> {
-          "image": {
-            "twitter": url + "?w=800&h=418&auto=format",
-            "facebook": url + "?w=1200&h=630&auto=format",
-            "fullSize": url + "?auto=format",
-            "sourceImage": url
-          }
-        })
-      }
-    }
-  },
-  body[]{
-    ...,
-    _type == "figure" => {
-      ...,
-      ...(image.asset-> {
-        "image": {
-          "mobile": url + "?w=800&auto=format",
-          "tablet": url + "?w=1600&auto=format",
-          "desktop": url + "?w=2400&auto=format",
-          "fullSize": url + "?auto=format",
-          "sourceImage": url
-        }
-      })
-    },
-  }
+  ${homeFields}
 }[0]`;
 
 export const postQuery = groq`

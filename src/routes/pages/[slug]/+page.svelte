@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Center, Stack } from '@realgoatish/svelte-every-layout';
+	import MenuSection from './../../menu/MenuSection.svelte';
 	import { PortableText } from '@portabletext/svelte';
 	import Figure from '$lib/Figure.svelte';
 	import { Somerset } from 'somerset';
@@ -53,17 +54,19 @@
 	<main id="main">
 		<div>
 			<Center max="var(--measure)" gutters="var(--s-1)">
-				<Stack>
-					<h1>Welcome to SunPress</h1>
-					<PortableText
-						value={$pageData.post.body}
-						components={{
-							types: {
-								figure: Figure
-							}
-						}}
-					/>
-				</Stack>
+				<div>
+					<Center max="var(--measure)" intrinsic="true">
+						<h1>{$pageData.title}</h1>
+					</Center>
+				</div>
+				<PortableText
+					value={$pageData.body}
+					components={{
+						types: {
+							menuSectionReference: MenuSection
+						}
+					}}
+				/>
 			</Center>
 		</div>
 	</main>
