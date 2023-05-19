@@ -103,7 +103,6 @@ function querySubscription<R = any>(options: {
 					if (err) {
 						error.set(err);
           } else {
-            console.log(`SHOULD INCLUDE DRAFTS!!!: ${JSON.stringify(result, null, 2)}`)
 						data.set(result);
 					}
 				});
