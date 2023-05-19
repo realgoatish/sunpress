@@ -46,9 +46,6 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
   }
   
   if (type === 'page' && slug === "/") {
-    // const homePage = await getSanityServerClient(true).fetch(postBySlugQuery, {
-    //   slug
-    // });
     const homePage = await getSanityServerClient(true).fetch(pageSlugQuery, {
       slug
     });
@@ -64,16 +61,11 @@ export const GET: RequestHandler = async ({ url, cookies, setHeaders }) => {
 		redirectSlug = `${homePage.slug}?isPreview=true`;
   }
 
-  console.log(`cookies before setPreviewCookie: ${JSON.stringify(cookies, null, 2)}`)
-
 	// Set the preview cookie.
   if (isPreviewing) {
     console.log(`setPreviewCookies is being called...`)
 		setPreviewCookie(cookies);
   }
-  
-  console.log(`cookies AFTER setPreviewCookie: ${JSON.stringify(cookies.get('__preview_mode'), null, 2)}`)
-
 
 	// Since this endpoint is called from the Sanity Studio on
 	// every content change, we'll make sure not to cache it.

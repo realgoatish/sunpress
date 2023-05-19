@@ -1,16 +1,11 @@
 import { env } from '$env/dynamic/public';
 import { isProd } from '$lib/config/environment'
 
-console.log(`import.meta.env.PROD: ${isProd}`)
-
-console.log(`projectId: ${env.PUBLIC_SANITY_PROJECT_ID}`)
-
 export const clientConfig = {
 	projectId: env.PUBLIC_SANITY_PROJECT_ID,
 	dataset: env.PUBLIC_SANITY_DATASET,
   useCdn: typeof document !== 'undefined' && isProd,
-  // token: SANITY_WEBSITE_TOKEN,
-	// useCdn == true gives fast, cheap responses using a globally distributed cache.
+  // useCdn == true gives fast, cheap responses using a globally distributed cache.
 	// When in production the Sanity API is only queried on build-time, and on-demand when responding to webhooks.
 	// Thus the data need to be fresh and API response time is less important.
 	// When in development/working locally, it's more important to keep costs down as hot reloading can incurr a lot of API calls

@@ -1,4 +1,3 @@
-// import type { Config } from '@sanity/groq-store/dist/typings/types';
 import type { Config } from '@sanity/groq-store/dist';
 
 

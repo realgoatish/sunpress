@@ -1,7 +1,4 @@
-import { processLayoutLogoUrl } from '$lib/js/sanityImages'
 import { mapOpeningHoursSEO } from '$lib/js/mapHoursOfOperation'
-import { processMenuImageUrls, processPageSeoImageUrls, processBlockImageUrls } from '$lib/js/sanityImages'
-
 
 export const processLayout = (data) => {
 

@@ -6,26 +6,14 @@
 
 	export let data;
 
-	// $: console.log(`ALL prop data in header: ${JSON.stringify(data, null, 2)}`);
-
 	$: ({ address, logo, navigationSections, openingHours } = data);
 
 	$: [socialNav] = navigationSections.filter((item) => item.id === 'social-nav');
 	// TODO change this to get the dereferenced phone number from query re: socialNav
 	// TODO also probably want to do .substring(2).replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3')
 	$: [phone] = socialNav.items.filter((item) => item.text === 'phone');
-	// $: console.log(`PHONE: ${JSON.stringify(phone, null, 2)}`);
 	$: [sitewideNav] = navigationSections.filter((item) => item.id === 'sitewide-nav');
 	$: hoursOfOperation = mapOpeningHoursUI(openingHours);
-
-	// $: console.log(`address in header: ${JSON.stringify(address, null, 2)}`);
-	// $: console.log(`logo in header: ${JSON.stringify(logo, null, 2)}`);
-	// $: console.log(`openingHours in header: ${JSON.stringify(openingHours, null, 2)}`);
-	// $: console.log(
-	// 	`openingHours mapped to Hours of Operation: ${JSON.stringify(hoursOfOperation, null, 2)}`
-	// );
-	// $: console.log(`socialNav in header: ${JSON.stringify(socialNav, null, 2)}`);
-	// $: console.log(`sitewideNav in header: ${JSON.stringify(sitewideNav, null, 2)}`);
 </script>
 
 <header class="content-section--spacer--biggish">
