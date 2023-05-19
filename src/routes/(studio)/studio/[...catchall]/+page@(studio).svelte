@@ -1,11 +1,12 @@
 <script lang="ts">
+	// import config from '$lib/config/sanity/sanity.config';
 	import { onMount } from 'svelte';
-	import config from '$lib/config/sanity/sanity.config';
 	// import SanityStudio from '$lib/utils/SanityStudio.svelte';
 
-	let SanityStudio;
+	let config, SanityStudio;
 
 	onMount(async () => {
+		config = (await import('$lib/config/sanity/sanity.config')).default;
 		SanityStudio = (await import('$lib/utils/SanityStudio.svelte')).default;
 	});
 </script>
