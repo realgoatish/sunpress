@@ -3,14 +3,9 @@
 	import ToggleSection from '$lib/components/ToggleSection.svelte';
 	import MenuItem from '$lib/components/MenuItem.svelte';
 
-	// export let section;
-	// export let index;
-
 	export let portableText;
 
 	$: ({ value } = portableText);
-
-	// $: console.log(`value in /menu/ portableText component: ${JSON.stringify(value, null, 2)}`);
 </script>
 
 <div>

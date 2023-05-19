@@ -23,12 +23,6 @@
 	$: ({ webPageSeo } = initialData);
 
 	$: ({ openGraph } = webPageSeo);
-
-	$: console.log(`menuPage data on the front end: ${JSON.stringify(data, null, 2)}`);
-
-	// $: ({ localBusiness, webPageSeo } = data);
-
-	// $: ({ openGraph } = webPageSeo);
 </script>
 
 {#if !previewMode}

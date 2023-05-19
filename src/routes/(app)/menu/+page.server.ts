@@ -1,5 +1,4 @@
 import { error } from '@sveltejs/kit';
-import { client } from '$lib/config/sanity/sanityClient.server'
 import { menuPageQuery, menuPagePreviewQuery } from '$lib/config/sanity/queries'
 import { processMenuPage } from '$lib/js/processEndpoints.server'
 import type { PageServerLoad } from './$types';
