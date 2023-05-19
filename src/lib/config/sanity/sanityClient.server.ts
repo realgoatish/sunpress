@@ -3,6 +3,7 @@ import type { ClientConfig, SanityClient } from '@sanity/client';
 // import { env } from '$env/dynamic/private';
 import { SANITY_WEBSITE_TOKEN } from '$env/static/private' 
 import { clientConfig } from './config'; 
+import { isProd } from '$lib/config/environment'
 // import {
 // 	SANITY_WEBSITE_TOKEN,
 // 	SANITY_PROJECT_ID,
@@ -21,9 +22,6 @@ export const previewClient = createClient({
 	useCdn: false,
 	token: SANITY_WEBSITE_TOKEN || ''
 });
-
-// TODO - MOVE THIS TO AN ENV FILE OR SOMETHING
-const isProd = import.meta.env.PROD
 
 export const client = createClient({ ...clientConfig, useCdn: typeof document !== 'undefined' && isProd, token: SANITY_WEBSITE_TOKEN });
 export const getSanityServerClient = (usePreview: boolean) => (usePreview ? previewClient : client);

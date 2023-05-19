@@ -15,7 +15,7 @@
 // 	return response;
 // };
 
-import { getPreviewCookie } from '$lib/js/previewCookie';
+import { getPreviewCookie } from '$lib/utils/previewCookie';
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {

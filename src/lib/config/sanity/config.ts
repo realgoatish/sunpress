@@ -1,6 +1,5 @@
 import { env } from '$env/dynamic/public';
-
-const isProd = import.meta.env.PROD;
+import { isProd } from '$lib/config/environment'
 
 console.log(`import.meta.env.PROD: ${isProd}`)
 
