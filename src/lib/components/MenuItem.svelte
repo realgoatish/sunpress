@@ -1,6 +1,6 @@
 <script>
 	import { H } from 'tusculum';
-	import { Stack, Frame } from '@realgoatish/svelte-every-layout';
+	import { Stack, Frame } from 'svelte-every-layout';
 
 	export let data;
 </script>

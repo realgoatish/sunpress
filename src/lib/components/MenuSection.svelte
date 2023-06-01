@@ -1,5 +1,5 @@
 <script>
-	import { Stack } from '@realgoatish/svelte-every-layout';
+	import { Stack } from 'svelte-every-layout';
 	import ToggleSection from '$lib/components/ToggleSection.svelte';
 	import MenuItem from '$lib/components/MenuItem.svelte';
 

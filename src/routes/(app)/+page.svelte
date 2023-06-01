@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Center, Stack } from '@realgoatish/svelte-every-layout';
+	import { Center, Stack } from 'svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
 	import Figure from '$lib/components/Figure.svelte';
 	import { Somerset } from 'somerset';
