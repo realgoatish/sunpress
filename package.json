@@ -48,7 +48,6 @@
 	"type": "module",
 	"dependencies": {
 		"@portabletext/svelte": "^2.0.0",
-		"@realgoatish/svelte-every-layout": "^0.0.23",
 		"@sanity/client": "^3.4.1",
 		"@sanity/groq-store": "^2.1.0",
 		"@sanity/ui": "^1.3.3",
@@ -60,6 +59,7 @@
 		"slug": "^8.0.0",
 		"somerset": "^0.0.3",
 		"styled-components": "^5.3.10",
+		"svelte-every-layout": "^0.0.25",
 		"tusculum": "^0.0.17"
 	}
 }
