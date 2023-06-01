@@ -1,5 +1,5 @@
 <script>
-	import { Cluster, Icon } from '@realgoatish/svelte-every-layout';
+	import { Cluster, Icon } from 'svelte-every-layout';
 
 	export let data;
 

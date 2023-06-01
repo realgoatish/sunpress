@@ -1,5 +1,5 @@
 <script>
-	import { Frame } from '@realgoatish/svelte-every-layout';
+	import { Frame } from 'svelte-every-layout';
 
 	export let portableText;
 

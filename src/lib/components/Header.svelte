@@ -1,5 +1,5 @@
 <script>
-	import { Center, Frame, Sidebar } from '@realgoatish/svelte-every-layout';
+	import { Center, Frame, Sidebar } from 'svelte-every-layout';
 	import { mapOpeningHoursUI } from '$lib/js/mapHoursOfOperation';
 	import Social from './Social.svelte';
 	import SiteNav from './SiteNav.svelte';

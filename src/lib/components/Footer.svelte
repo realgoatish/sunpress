@@ -1,5 +1,5 @@
 <script>
-	import { Center } from '@realgoatish/svelte-every-layout';
+	import { Center } from 'svelte-every-layout';
 	import Social from './Social.svelte';
 
 	export let data;

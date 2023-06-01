@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Center } from '@realgoatish/svelte-every-layout';
+	import { Center } from 'svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
 	import MenuSection from '$lib/components/MenuSection.svelte';
 	import { Somerset, BreadcrumbJsonLd } from 'somerset';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { sanityUser } from '$lib/config/sanity';
-	import { Cluster, Frame } from '@realgoatish/svelte-every-layout';
+	import { Cluster, Frame } from 'svelte-every-layout';
 
 	export let embedded = false;
 
