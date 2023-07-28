@@ -63,7 +63,7 @@
 {#if showPreviewBanner}
 	<PreviewBanner {embedded} />
 {/if}
-
+<p>Please call to order. Our online ordering service is experiencing technical difficulties</p>
 <Header data={headerData} />
 <slot />
 <Footer data={data.navigationSections} />
@@ -76,6 +76,14 @@
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
+	}
+
+	p {
+		background: orange;
+		color: black;
+		font-size: 1.25rem;
+		text-align: center;
+		min-width: 100%;
 	}
 
 	:global(h1),
