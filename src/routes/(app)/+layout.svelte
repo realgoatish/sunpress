@@ -63,7 +63,8 @@
 {#if showPreviewBanner}
 	<PreviewBanner {embedded} />
 {/if}
-<p>Please call to order. Our online ordering service is experiencing technical difficulties</p>
+<!-- URGENT code for emergency banner -->
+<!-- <p>Please call to order. Our online ordering service is experiencing technical difficulties</p> -->
 <Header data={headerData} />
 <slot />
 <Footer data={data.navigationSections} />
@@ -78,13 +79,14 @@
 		font-display: swap;
 	}
 
-	p {
+	/* URGENT code for emergency banner */
+	/* p {
 		background: orange;
 		color: black;
 		font-size: 1.25rem;
 		text-align: center;
 		min-width: 100%;
-	}
+	} */
 
 	:global(h1),
 	:global(h2),
