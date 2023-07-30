@@ -64,7 +64,10 @@
 	<PreviewBanner {embedded} />
 {/if}
 <!-- URGENT code for emergency banner -->
-<!-- <p>Please call to order. Our online ordering service is experiencing technical difficulties</p> -->
+<p>
+	Please call to order from <a href="/menu/">our menu</a>, or order via walk-in. Our online ordering
+	service is temporarily down. We apologize for any inconvenience.
+</p>
 <Header data={headerData} />
 <slot />
 <Footer data={data.navigationSections} />
@@ -80,13 +83,17 @@
 	}
 
 	/* URGENT code for emergency banner */
-	/* p {
+	p {
 		background: orange;
 		color: black;
 		font-size: 1.25rem;
 		text-align: center;
 		min-width: 100%;
-	} */
+	}
+
+	p a {
+		color: blue;
+	}
 
 	:global(h1),
 	:global(h2),
