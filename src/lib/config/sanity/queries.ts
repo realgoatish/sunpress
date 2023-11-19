@@ -1,5 +1,50 @@
 import groq from 'groq';
 
+// const layoutFields = groq`
+//   localBusiness{
+//     ...,
+//     logo{
+//       ...,
+//       ...(image.asset-> {
+//         "image": {
+//           "fullSize": url
+//         }
+//       })
+//     }
+//   },
+//   address,
+//   openingHours,
+//   logo{
+//     ...,
+//     ...(image.asset-> {
+//       "image": {
+//         "mobile": url + "?w=800&auto=format",
+//         "tablet": url + "?w=1600&auto=format",
+//         "desktop": url + "?w=2400&auto=format",
+//         "fullSize": url + "?auto=format",
+//         "sourceImage": url
+//       }
+//     })
+//   },
+//   navigationSections[]->{
+//     title,
+//     description,
+//     "id": navigationId.current,
+//     items[]{
+//       text,
+//       description,
+//       "link": navigationItemUrl{
+//         "internal": internalLink{
+//           _type == "reference" => @->{
+//             "url": slug.current
+//           }
+//         },
+//         externalUrl
+//       }
+//     }
+//   }
+// `
+
 const layoutFields = groq`
   localBusiness{
     ...,
@@ -26,20 +71,22 @@ const layoutFields = groq`
       }
     })
   },
-  navigationSections[]->{
-    title,
-    description,
-    "id": navigationId.current,
-    items[]{
-      text,
+  id != "order-online-nav" => {
+    navigationSections[]->{
+      title,
       description,
-      "link": navigationItemUrl{
-        "internal": internalLink{
-          _type == "reference" => @->{
-            "url": slug.current
-          }
-        },
-        externalUrl
+      "id": navigationId.current,
+      items[]{
+        text,
+        description,
+        "link": navigationItemUrl{
+          "internal": internalLink{
+            _type == "reference" => @->{
+              "url": slug.current
+            }
+          },
+          externalUrl
+        }
       }
     }
   }
@@ -174,6 +221,57 @@ export const menuPageQuery = groq`*[_type == "page" && menu == true] [0] {
 
 export const menuPagePreviewQuery = groq`*[_type == "page" && menu == true] | order(date desc, _updatedAt desc) [0] {
   ${menuPageFields}
+}`
+
+export const orderOnlinePageFields = groq`
+  ...,
+  "slug": slug.current,
+  webPageSeo{
+    ...,
+    openGraph{
+      ...,
+      ogImage{
+        ...,
+        ...(image.asset-> {
+          "image": {
+            "twitter": url + "?w=800&h=418&auto=format",
+            "facebook": url + "?w=1200&h=630&auto=format",
+            "fullSize": url + "?auto=format",
+            "sourceImage": url
+          }
+        })
+      }
+    }
+  },
+  body[]{
+    ...,
+    _type == "navigationReference" => @->{
+      title,
+      description,
+      "id": navigationId.current,
+      items[]{
+        text,
+        description,
+        "link": navigationItemUrl{
+          "internal": internalLink{
+            _type == "reference" => @->{
+              "url": slug.current
+            }
+          },
+          externalUrl
+        }
+      }
+    }
+
+  }
+`
+
+export const orderOnlinePageQuery = groq`*[_type == "page" && slug.current == "/order-online/"] [0] {
+  ${orderOnlinePageFields}
+}`
+
+export const orderOnlinePagePreviewQuery = groq`*[_type == "navigation" && slug.current == "/order-online/"] | order(date desc, _updatedAt desc) [0] {
+  ${orderOnlinePageFields}
 }`
 
 export const sitemapQuery = () => `{

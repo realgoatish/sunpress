@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { Center, Stack } from 'svelte-every-layout';
+	import { Center, Stack, Cluster } from 'svelte-every-layout';
 	import { PortableText } from '@portabletext/svelte';
-	import Figure from '$lib/components/Figure.svelte';
+	import SiteNav from '$lib/components/SiteNav.svelte';
 	import { Somerset } from 'somerset';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	import { previewSubscription } from '$lib/config/sanity';
-	import { homePagePreviewQuery } from '$lib/config/sanity/queries';
+	import { orderOnlinePagePreviewQuery } from '$lib/config/sanity/queries';
 
 	export let data: PageData;
 
 	$: ({ initialData, previewMode, slug, localBusiness } = data);
 
-	$: test = previewSubscription(homePagePreviewQuery, {
+	$: test = previewSubscription(orderOnlinePagePreviewQuery, {
 		params: { slug },
 		initialData,
 		enabled: previewMode && !!slug
@@ -29,6 +29,8 @@
 	$: ({ webPageSeo } = initialData);
 
 	$: ({ openGraph } = webPageSeo);
+
+	$: [orderOnlineLinks] = $pageData?.body?.filter((item) => item.id === 'order-online-nav');
 </script>
 
 {#if !previewMode}
@@ -56,18 +58,35 @@
 {/if}
 
 <main id="main">
+	<!-- {JSON.stringify($pageData, null, 2)} -->
 	<div>
-		<Center max="var(--measure)" gutters="var(--s-1)">
+		<Center max="var(--measure)" gutters="var(--s-1)" andText={true}>
 			<Stack>
-				<h1>Welcome to SunPress</h1>
-				<PortableText
-					value={$pageData.body}
-					components={{
-						types: {
-							figure: Figure
-						}
-					}}
-				/>
+				<h1>{$pageData.title}</h1>
+				<p>{$pageData.description}</p>
+				<Cluster wrapperElement="ul" justify="center">
+					{#each orderOnlineLinks.items as item}
+						{#if item.link?.internal?.url}
+							<li>
+								<a
+									href={item.link.internal.url}
+									class="nav-link"
+									class:selected={$page.url.pathname === item.link.internal.url}
+									aria-current={$page.url.pathname === item.link.internal.url}>{item.text}</a
+								>
+							</li>
+						{:else}
+							<li>
+								<a
+									href={item.link.externalUrl}
+									class="nav-link"
+									class:selected={$page.url.pathname === item.link.externalUrl}
+									aria-current={$page.url.pathname === item.link.externalUrl}>{item.text}</a
+								>
+							</li>
+						{/if}
+					{/each}
+				</Cluster>
 			</Stack>
 		</Center>
 	</div>
