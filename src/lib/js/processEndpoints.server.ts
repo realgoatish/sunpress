@@ -23,3 +23,8 @@ export const processMenuPage = (data) => {
 
   return data
 }
+
+export const processOrderOnlinePage = (data) => {
+
+  return data
+}
