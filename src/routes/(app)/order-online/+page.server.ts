@@ -4,6 +4,8 @@ import { processOrderOnlinePage } from '$lib/js/processEndpoints.server'
 import type { PageServerLoad } from './$types';
 import { getSanityServerClient } from '$lib/config/sanity/sanityClient.server';
 
+export const prerender = true
+
 export const load: PageServerLoad = async ({ parent }) => {
   const { previewMode } = await parent()
 
