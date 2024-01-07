@@ -1,9 +1,9 @@
-import { env } from '$env/dynamic/public';
+import { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET, PUBLIC_SANITY_API_VERSION } from '$env/static/public';
 import { isProd } from '$lib/config/environment'
 
 export const clientConfig = {
-	projectId: env.PUBLIC_SANITY_PROJECT_ID,
-	dataset: env.PUBLIC_SANITY_DATASET,
+	projectId: PUBLIC_SANITY_PROJECT_ID,
+	dataset: PUBLIC_SANITY_DATASET,
   useCdn: typeof document !== 'undefined' && isProd,
   // useCdn == true gives fast, cheap responses using a globally distributed cache.
 	// When in production the Sanity API is only queried on build-time, and on-demand when responding to webhooks.
@@ -11,6 +11,6 @@ export const clientConfig = {
 	// When in development/working locally, it's more important to keep costs down as hot reloading can incurr a lot of API calls
 	// And every page load calls getStaticProps.
 	// To get the lowest latency, lowest cost, and latest data, use the Instant Preview mode
-	apiVersion: env.PUBLIC_SANITY_API_VERSION,
+	apiVersion: PUBLIC_SANITY_API_VERSION,
 	// see https://www.sanity.io/docs/api-versioning for how versioning works
 };

@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ parent }) => {
   }
 
   if (!response) {
-    throw error(404, 'Home Page not found');
+    error(404, 'Home Page not found');
   }
 
   const processedResponse = processPage(response)

@@ -18,7 +18,7 @@ export const load: PageServerLoad = async ({ parent }) => {
   }
 
   if (!response) {
-    throw error(404, 'Order Online Page not found');
+    error(404, 'Order Online Page not found');
   }
 
   const processedResponse = processOrderOnlinePage(response)

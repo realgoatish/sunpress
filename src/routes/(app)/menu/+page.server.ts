@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ parent }) => {
   }
 
   if (!response) {
-    throw error(404, 'Menu Page not found');
+    error(404, 'Menu Page not found');
   }
 
   const processedResponse = processMenuPage(response)

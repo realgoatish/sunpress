@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { Center, Stack, Cluster } from 'svelte-every-layout';
-	import { PortableText } from '@portabletext/svelte';
-	import SiteNav from '$lib/components/SiteNav.svelte';
 	import { Somerset } from 'somerset';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
