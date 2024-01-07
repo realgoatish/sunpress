@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Center, Stack, Cluster } from 'svelte-every-layout';
-	import { Somerset } from 'somerset';
+	import { Somerset, BreadcrumbJsonLd } from 'somerset';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	import { previewSubscription } from '$lib/config/sanity';
@@ -52,6 +52,16 @@
 				}
 			]
 		}}
+	/>
+
+	<BreadcrumbJsonLd
+		itemListElements={[
+			{
+				position: 1,
+				name: 'Home',
+				item: `${$page.url.origin}/`
+			}
+		]}
 	/>
 {/if}
 
