@@ -8,9 +8,9 @@ const config = {
 	preprocess: preprocess({
 		preserve: ['ld+json']
 	}),
-
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		moduleExtensions: ['.js', '.ts']
 	}
 };
 

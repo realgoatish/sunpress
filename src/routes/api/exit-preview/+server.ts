@@ -7,5 +7,5 @@ export const GET: RequestHandler = async ({ request, cookies, url }) => {
 
 	clearPreviewCookie(cookies);
 
-	throw redirect(302, referer || url.origin || '/');
+	redirect(302, referer || url.origin || '/');
 };

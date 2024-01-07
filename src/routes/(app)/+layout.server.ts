@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ locals: { previewMode }, url }) => 
   })
 
 	if (!response) {
-    throw error(404, 'Global Layout not found WEASEL WEASEL');
+    error(404, 'Global Layout not found WEASEL WEASEL');
   }
 
   return {
