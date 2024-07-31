@@ -6,13 +6,13 @@
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	import { previewSubscription } from '$lib/config/sanity';
-	import { menuPagePreviewQuery } from '$lib/config/sanity/queries';
+	import { menuRestaurantPagePreviewQuery } from '$lib/config/sanity/queries';
 
 	export let data: PageData;
 
 	$: ({ initialData, previewMode, slug, localBusiness } = data);
 
-	$: test = previewSubscription(menuPagePreviewQuery, {
+	$: test = previewSubscription(menuRestaurantPagePreviewQuery, {
 		params: { slug },
 		initialData,
 		enabled: previewMode && !!slug

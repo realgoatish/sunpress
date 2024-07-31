@@ -39,12 +39,20 @@ export async function GET() {
         </image:image>`).join("")}
       </url>
       <url>
-        <loc>https://www.sunpressnj.com/menu/</loc>
+        <loc>https://www.sunpressnj.com/menus/resaturant/</loc>
         <priority>0.85</priority>
         ${menuPageImages.map(img => `
         <image:image>
           <image:loc>${img}</image:loc>
         </image:image>`).join("")}
+      </url>
+      <url>
+        <loc>https://www.sunpressnj.com/menus/catering/</loc>
+        <priority>0.85</priority>
+      </url>
+      <url>
+        <loc>https://www.sunpressnj.com/order-online/</loc>
+        <priority>0.85</priority>
       </url>
     </urlset>`.trim(),
     {
