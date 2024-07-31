@@ -36,15 +36,15 @@
 			title: openGraph.title,
 			description: openGraph.description,
 			siteName: localBusiness.name,
-			locale: 'en-US'
-			// images: [
-			// 	{
-			// 		url: openGraph.ogImage.image.facebook,
-			// 		width: 1200,
-			// 		height: 630,
-			// 		alt: openGraph.ogImage.alt
-			// 	}
-			// ]
+			locale: 'en-US',
+			images: [
+				{
+					url: openGraph.ogImage.image.facebook,
+					width: 1200,
+					height: 630,
+					alt: openGraph.ogImage.alt
+				}
+			]
 		}}
 	/>
 
