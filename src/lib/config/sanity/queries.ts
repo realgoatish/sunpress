@@ -215,11 +215,19 @@ export const menuPageFields = groq`
   }
 `
 
-export const menuPageQuery = groq`*[_type == "page" && menu == true] [0] {
+export const menuRestaurantPageQuery = groq`*[_type == "page" && menu == true && slug.current == "/menus/restaurant/"] [0] {
   ${menuPageFields}
 }`;
 
-export const menuPagePreviewQuery = groq`*[_type == "page" && menu == true] | order(date desc, _updatedAt desc) [0] {
+export const menuRestaurantPagePreviewQuery = groq`*[_type == "page" && menu == true && slug.current == "/menus/restaurant/"] | order(date desc, _updatedAt desc) [0] {
+  ${menuPageFields}
+}`
+
+export const menuCateringPageQuery = groq`*[_type == "page" && menu == true && slug.current == "/menus/catering/"] [0] {
+  ${menuPageFields}
+}`;
+
+export const menuCateringPagePreviewQuery = groq`*[_type == "page" && menu == true && slug.current == "/menus/catering/"] | order(date desc, _updatedAt desc) [0] {
   ${menuPageFields}
 }`
 
