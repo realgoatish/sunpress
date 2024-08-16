@@ -39,7 +39,7 @@ export async function GET() {
         </image:image>`).join("")}
       </url>
       <url>
-        <loc>https://www.sunpressnj.com/menus/resaturant/</loc>
+        <loc>https://www.sunpressnj.com/menus/restaurant/</loc>
         <priority>0.85</priority>
         ${menuPageImages.map(img => `
         <image:image>
